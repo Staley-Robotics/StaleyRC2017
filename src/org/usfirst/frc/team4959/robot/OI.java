@@ -1,14 +1,15 @@
 package org.usfirst.frc.team4959.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
-
-import org.usfirst.frc.team4959.robot.commands.ExampleCommand;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
 	//// joystick.
@@ -16,6 +17,31 @@ public class OI {
 	// number it is.
 	// Joystick stick = new Joystick(port);
 	// Button button = new JoystickButton(stick, buttonNumber);
+	
+	public static Joystick xboxController;
+	public static Joystick joystick;
+	
+	public OI() {
+	
+		//Xbox Controller
+			xboxController = new Joystick(RobotMap.XBOX_PORT);
+		
+		//Joystick
+			joystick = new Joystick(RobotMap.JOYSTICK_PORT);
+
+	}
+	
+	public double getLeftTrigger() {
+		return xboxController.getRawAxis(RobotMap.LEFT_TRIGGER);
+	}
+
+	public double getRightTrigger() {
+		return xboxController.getRawAxis(RobotMap.RIGHT_TRIGGER);
+	}
+
+	public double getLeftStickX() {
+		return xboxController.getRawAxis(RobotMap.LEFT_X_AXIS);
+	}
 
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to
