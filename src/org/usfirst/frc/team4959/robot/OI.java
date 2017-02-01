@@ -1,6 +1,9 @@
 package org.usfirst.frc.team4959.robot;
 
+import org.usfirst.frc.team4959.robot.commands.RunClimber;
+
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -17,20 +20,34 @@ public class OI {
 	// number it is.
 	// Joystick stick = new Joystick(port);
 	// Button button = new JoystickButton(stick, buttonNumber);
-	
+	public static XboxController xcController;
 	public static Joystick xboxController;
 	public static Joystick joystick;
-	
-	public OI() {
-	
-		//Xbox Controller
-			xboxController = new Joystick(RobotMap.XBOX_PORT);
-		
-		//Joystick
-			joystick = new Joystick(RobotMap.JOYSTICK_PORT);
 
+	public OI() {
+
+		// Xbox Controller
+		xboxController = new Joystick(RobotMap.XBOX_PORT);
+
+		Button raiseClimb = new JoystickButton(xboxController, RobotMap.A_BUTTON);
+		raiseClimb.whileActive(new RunClimber(1));
+		
+		Button lowerClimb = new JoystickButton(xboxController, RobotMap.B_BUTTON);
+		lowerClimb.whileHeld(new RunClimber(-1));
+
+
+		// Joystick
+		joystick = new Joystick(RobotMap.JOYSTICK_PORT);
 	}
-	
+
+	public double getUp() {
+		return xboxController.getPOV(1);
+	}
+
+	public double getDown() {
+		return xboxController.getPOV(5);
+	}
+
 	public double getLeftTrigger() {
 		return xboxController.getRawAxis(RobotMap.LEFT_TRIGGER);
 	}

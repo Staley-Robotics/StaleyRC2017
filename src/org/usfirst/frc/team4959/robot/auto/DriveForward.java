@@ -1,44 +1,50 @@
-package org.usfirst.frc.team4959.robot.commands;
+package org.usfirst.frc.team4959.robot.auto;
 
-import org.usfirst.frc.team4959.robot.Robot;
-import org.usfirst.frc.team4959.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team4959.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class JoystickDrive extends Command {
+public class DriveForward extends Command {
+	private double speed;
+	private double time;
+	private Timer timer = new Timer();
 
-	DriveTrain drive;
-	private double speedModifier = 1;
+	protected RobotDrive drive = RobotMap.driveTrain;
 
-	public JoystickDrive(double speedModifier) {
+	public DriveForward(double speed, double time) {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		this.speedModifier = speedModifier;
-		requires(Robot.driveTrain);
+		this.speed = speed;
+		this.time = time;
+
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
+		timer.start();
+
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.driveTrain.worldOfTanksDrive(Robot.oi.getRightTrigger() * speedModifier,
-				Robot.oi.getLeftTrigger() * speedModifier, Robot.oi.getLeftStickX() * speedModifier);
-		
+		drive.arcadeDrive(speed, 0);
+
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return false;
+		System.out.println("Ryan");
+		return (timer.get() > time);
 	}
 
 	// Called once after isFinished returns true
 	protected void end() {
+		timer.stop();
 	}
 
 	// Called when another command which requires one or more of the same

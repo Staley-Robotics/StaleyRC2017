@@ -8,6 +8,10 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team4959.robot.auto.Drive;
+import org.usfirst.frc.team4959.robot.auto.GyroTurning;
+import org.usfirst.frc.team4959.robot.commands.RunClimber;
+import org.usfirst.frc.team4959.robot.subsystems.Climber;
 import org.usfirst.frc.team4959.robot.subsystems.DriveTrain;
 
 /**
@@ -18,13 +22,17 @@ import org.usfirst.frc.team4959.robot.subsystems.DriveTrain;
  * directory.
  */
 public class Robot extends IterativeRobot {
-
-//	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+//STREAKS
+	// public static final ExampleSubsystem exampleSubsystem = new
+	// ExampleSubsystem();
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static OI oi;
 	protected org.usfirst.frc.team4959.robot.commands.JoystickDrive JoystickDrive;
+	protected RunClimber startClimber;
+	public static Climber climber = new Climber();
 
 	Command autonomousCommand;
+
 	SendableChooser<Command> auto = new SendableChooser<>();
 
 	/**
@@ -33,9 +41,11 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
+		RobotMap.init();
 		oi = new OI();
-		auto.addDefault("Default Auto", JoystickDrive);
-		// chooser.addObject("My Auto", new MyAutoCommand());
+		auto = new SendableChooser();
+		auto.addObject("Default Auto", new Drive());
+		// auto.addDefault("My Auto", new Drive());
 		SmartDashboard.putData("Auto mode", auto);
 	}
 
@@ -79,9 +89,10 @@ public class Robot extends IterativeRobot {
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();
+
 	}
 
-	/**
+ 	/**
 	 * This function is called periodically during autonomous
 	 */
 	@Override
@@ -105,6 +116,10 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+
+		// double angle =
+		//SmartDashboard.putNumber("Angle", 50);
+	//	SmartDashboard.putData("Turn With Gyro", new GyroTurnning(SmartDashboard.getNumber("Angle")));
 	}
 
 	/**
