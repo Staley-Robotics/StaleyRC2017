@@ -1,6 +1,9 @@
 package org.usfirst.frc.team4959.robot;
 
-import org.usfirst.frc.team4959.robot.commands.RunClimber;
+import org.usfirst.frc.team4959.robot.commands.Agrivator.RunAgrivator;
+import org.usfirst.frc.team4959.robot.commands.Climber.RunClimber;
+import org.usfirst.frc.team4959.robot.commands.Intake.RunIntake;
+import org.usfirst.frc.team4959.robot.commands.Shooter.RunShooter;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
@@ -26,18 +29,28 @@ public class OI {
 
 	public OI() {
 
-		// Xbox Controller
+		//    ***** X-Box Controller *****
 		xboxController = new Joystick(RobotMap.XBOX_PORT);
+		
+        //    ***** Joystick *****
+			joystick = new Joystick(RobotMap.JOYSTICK_PORT);
+			
+		//    ***** Bound Buttons *****
 
 		Button raiseClimb = new JoystickButton(xboxController, RobotMap.A_BUTTON);
 		raiseClimb.whileActive(new RunClimber(1));
 		
 		Button lowerClimb = new JoystickButton(xboxController, RobotMap.B_BUTTON);
 		lowerClimb.whileHeld(new RunClimber(-1));
-
-
-		// Joystick
-		joystick = new Joystick(RobotMap.JOYSTICK_PORT);
+		
+		Button runShooter = new JoystickButton(xboxController, RobotMap.X_BUTTON);
+		runShooter.whileHeld(new RunShooter());
+		
+		Button runIntake = new JoystickButton(xboxController, RobotMap.Y_BUTTON);
+		runIntake.whileHeld(new RunIntake());
+		
+		Button runAgrivator = new JoystickButton(xboxController, RobotMap.BACK_BUTTON);
+		runAgrivator.whileActive(new RunAgrivator());
 	}
 
 	public double getUp() {

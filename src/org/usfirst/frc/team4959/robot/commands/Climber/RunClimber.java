@@ -1,24 +1,19 @@
-package org.usfirst.frc.team4959.robot.commands;
+package org.usfirst.frc.team4959.robot.commands.Climber;
 
 import org.usfirst.frc.team4959.robot.Robot;
-import org.usfirst.frc.team4959.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class JoystickDrive extends Command {
+public class RunClimber extends Command {
+	private int speed;
 
-	DriveTrain drive;
-	private double speedModifier = 1;
-
-	public JoystickDrive(double speedModifier) {
+	public RunClimber(int speed) {
 		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
-		this.speedModifier = speedModifier;
-		requires(Robot.driveTrain);
+		this.speed = speed;
+		requires(Robot.climber);
 	}
 
 	// Called just before this Command runs the first time
@@ -27,9 +22,7 @@ public class JoystickDrive extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.driveTrain.worldOfTanksDrive(Robot.oi.getRightTrigger() * speedModifier,
-				Robot.oi.getLeftTrigger() * speedModifier, Robot.oi.getLeftStickX() * speedModifier);
-		
+		Robot.climber.runClimber(speed);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -39,10 +32,13 @@ public class JoystickDrive extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
+		Robot.climber.runClimber(0);
+
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
+		Robot.climber.runClimber(0);
 	}
 }

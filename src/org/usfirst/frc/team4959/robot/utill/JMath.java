@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4959.robot.utill;
-
+/**
+ * Keeps speed within 2 given vales so gyro can pick up robot moment. 
+ */
 public class JMath {
 	public static int clamp(int number, int min, int max) {
 		if (number < min)

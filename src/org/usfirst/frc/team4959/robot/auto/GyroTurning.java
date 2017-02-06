@@ -37,6 +37,7 @@ public class GyroTurning extends Command {
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		//setSetpoint(toAngle);
+		gyro.reset();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -46,9 +47,9 @@ public class GyroTurning extends Command {
 			isTurning = true;
 			drive.arcadeDrive(0, 0);
 		}
-		if (gyro.getAngle() > toAngle) {
+		if (Math.abs(gyro.getAngle()) > Math.abs(toAngle)) {
 			drive.arcadeDrive(0, speed);
-		} else if (gyro.getAngle() < toAngle) {
+		} else if (Math.abs(gyro.getAngle()) < Math.abs(toAngle)) {
 			drive.arcadeDrive(0, -speed);
 		} else {
 			drive.arcadeDrive(0, 0);
@@ -65,9 +66,10 @@ public class GyroTurning extends Command {
 	protected void end() {
 		drive.stop();
 		System.out.println("Has Ended");
-		gyro.free();
+		
 	}
 	//Above does gyro turns.
+	
 
 	
 

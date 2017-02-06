@@ -10,9 +10,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4959.robot.auto.Drive;
 import org.usfirst.frc.team4959.robot.auto.GyroTurning;
-import org.usfirst.frc.team4959.robot.commands.RunClimber;
+import org.usfirst.frc.team4959.robot.commands.Climber.RunClimber;
+import org.usfirst.frc.team4959.robot.subsystems.Agrivator;
 import org.usfirst.frc.team4959.robot.subsystems.Climber;
 import org.usfirst.frc.team4959.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team4959.robot.subsystems.Intake;
+import org.usfirst.frc.team4959.robot.subsystems.Shooter;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,11 +28,17 @@ public class Robot extends IterativeRobot {
 //STREAKS
 	// public static final ExampleSubsystem exampleSubsystem = new
 	// ExampleSubsystem();
+	
+	//    ***** Subsystems *****
+	public static final Agrivator agrivator = new Agrivator();
+	public static final Intake intake = new Intake();
+	public static final Climber climber = new Climber();
+	public static final Shooter shooter = new Shooter();
 	public static final DriveTrain driveTrain = new DriveTrain();
+	
 	public static OI oi;
-	protected org.usfirst.frc.team4959.robot.commands.JoystickDrive JoystickDrive;
+	protected org.usfirst.frc.team4959.robot.commands.Drive.JoystickDrive JoystickDrive;
 	protected RunClimber startClimber;
-	public static Climber climber = new Climber();
 
 	Command autonomousCommand;
 
@@ -102,6 +111,11 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
+		
+		
+		
+		
+		
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove

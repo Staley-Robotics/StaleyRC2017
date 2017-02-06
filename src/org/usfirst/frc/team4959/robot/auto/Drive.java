@@ -56,7 +56,7 @@ public class Drive extends CommandGroup {
 		 * DriveForward(0.5, 3.5)); addSequential(new Turn(0.75, .75));
 		 * addSequential(new DriveForward(0.5, 3.5));
 		 */
-		 addSequential(new DriveForward( 0.5, 2));
+		 /*addSequential(new DriveForward( 0.5, 2));
 		 addSequential(new Turn(-0.5, 2));
 		 addSequential(new DriveForward(0.5, 3.8));
 		 addSequential(new Turn(0.75, 0.75));
@@ -68,9 +68,16 @@ public class Drive extends CommandGroup {
 		 addSequential(new Turn(0.75, 0.75));
 		 addSequential(new DriveForward(0.5, 3));
 		 //All above is for moving (forward/backward, turning)
-		 
+		 */
+		
 
-		//addParallel(new GyroTurning(180, 0.6));
+		addSequential(new GyroDrive(1.5,0.5));
+		addSequential(new GyroDrive(1,-0.5));
+		addSequential(new GyroTurning(40, 0.8));
+		addSequential(new Delay(1));
+		addSequential(new GyroDrive(2,0.5));
+		
+		
 
 	}
 

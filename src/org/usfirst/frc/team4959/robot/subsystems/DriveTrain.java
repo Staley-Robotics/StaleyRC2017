@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4959.robot.subsystems;
 
 import org.usfirst.frc.team4959.robot.RobotMap;
-import org.usfirst.frc.team4959.robot.commands.JoystickDrive;
+import org.usfirst.frc.team4959.robot.commands.Drive.JoystickDrive;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 
 /**
- *
+ * Controls basic drive functionality of the robot
  */
 public class DriveTrain extends Subsystem {
 	RobotDrive drive = RobotMap.driveTrain;

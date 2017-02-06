@@ -7,13 +7,11 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Runs the shooter motor
  */
 public class RunShooter extends Command {
 	//The speed at which the motor is moving/The amount of power the motor is using
-	private final double SPEED = 1;
-
-//    DigitalInput limitSwitch = RobotMap.shooterLimitSwitch;
+	private final double SPEED = 0.8;
 	
     public RunShooter() {
         // Use requires() here to declare subsystem dependencies

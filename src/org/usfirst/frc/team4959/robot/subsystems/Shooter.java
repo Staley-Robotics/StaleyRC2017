@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *
+ * Controls ball shooter on the robot
  */
 public class Shooter extends Subsystem {
 
@@ -20,7 +20,7 @@ public class Shooter extends Subsystem {
     }
     //Begins running the shooter and sets the speed for it
     public void runShooter(double speed) {
-    	shooterMotor.set(-speed);
+    	shooterMotor.set(speed);
     }
     //Turns off the motor for the shooter
     public void stopShooter() {
