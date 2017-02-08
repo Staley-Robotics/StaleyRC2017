@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4959.robot.subsystems;
 
+import org.usfirst.frc.team4959.robot.commands.RunCompressor;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.RunGearDrop;
 
 import edu.wpi.first.wpilibj.Compressor;
@@ -20,7 +21,7 @@ public class GearDrop extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new RunGearDrop());
+    	setDefaultCommand(new RunCompressor());
     }
     
     public void runCompressor() {

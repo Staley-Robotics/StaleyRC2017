@@ -1,9 +1,6 @@
 # StaleyRC2017
 Staley Robot Code for 2017 SteamWorks
 
-Code is divded by auto modes, commands, subsystems, a util with a single file in it, and the primary classes.
-If any additional commenting is needed please feel free to ask and we will add it. 
-
 # Controls
 X-Box:
 Right/Left Trigger: Forward/Reverse
@@ -13,4 +10,7 @@ B BUtton: Reverse Climber (Lowers bot)
 X Button: Shooter (Shoots balls)
 Y Button: Intake (Takes balls into the bot)
 Back Button (<): Loads balls for shooting
-Start Button (>): Drops Gear (unteasted)
+Start Button (>): Drops Gear [UNTESTED] (drops gear then waits 3 seconds to close gear holder)
+
+# Ports
+Look at "***** Motor/Speed Controller Ports *****" inside RobotMap.java

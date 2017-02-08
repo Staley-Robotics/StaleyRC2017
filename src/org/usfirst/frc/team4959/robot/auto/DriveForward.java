@@ -38,7 +38,7 @@ public class DriveForward extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		System.out.println("Ryan");
+		//System.out.println("Ryan");
 		return (timer.get() > time);
 	}
 

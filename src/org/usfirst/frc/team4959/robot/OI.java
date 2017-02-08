@@ -54,7 +54,7 @@ public class OI {
 		runAgrivator.whileActive(new RunAgrivator());
 		
 		Button dropGear = new JoystickButton(xboxController, RobotMap.START_BUTTON);
-		dropGear.whenPressed(new RunGearDrop());
+		dropGear.whenPressed(new RunGearDrop(3.0));
 	}
 
 	public double getUp() {

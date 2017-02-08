@@ -1,44 +1,40 @@
-package org.usfirst.frc.team4959.robot.commands.Shooter;
+package org.usfirst.frc.team4959.robot.commands;
 
 import org.usfirst.frc.team4959.robot.Robot;
-import org.usfirst.frc.team4959.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * Runs the shooter motor
+ *
  */
-public class RunShooter extends Command {
-	//The speed at which the motor is moving/The amount of power the motor is using
-	private final double SPEED = -0.9;
-	
-    public RunShooter() {
+public class RunCompressor extends Command {
+
+    public RunCompressor() {
         // Use requires() here to declare subsystem dependencies
-    	requires(Robot.shooter);
+        // eg. requires(chassis);
+    	requires(Robot.gearDrop);
     }
+
     // Called just before this Command runs the first time
     protected void initialize() {
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.shooter.runShooter(SPEED);
+    	Robot.gearDrop.runCompressor();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return false;
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-//    	Robot.shooter.stopShooter();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	Robot.shooter.stopShooter();
     }
 }
