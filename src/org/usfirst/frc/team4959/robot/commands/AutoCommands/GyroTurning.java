@@ -1,4 +1,4 @@
-package org.usfirst.frc.team4959.robot.auto;
+package org.usfirst.frc.team4959.robot.commands.AutoCommands;
 
 import org.usfirst.frc.team4959.robot.Robot;
 import org.usfirst.frc.team4959.robot.RobotMap;
@@ -29,11 +29,8 @@ public class GyroTurning extends Command {
 		this.toAngle = angle;
 		requires(Robot.driveTrain);
 		//setInputRange(0,360);
-		
-
 	}
 	
-	// STREAKS.
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		//setSetpoint(toAngle);
@@ -65,7 +62,6 @@ public class GyroTurning extends Command {
 
 	protected void end() {
 		drive.stop();
-		System.out.println("Has Ended");
 		
 	}
 	//Above does gyro turns.

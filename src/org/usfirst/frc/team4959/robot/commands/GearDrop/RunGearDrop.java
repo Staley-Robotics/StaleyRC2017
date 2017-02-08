@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4959.robot.commands.GearDrop;
 
 import org.usfirst.frc.team4959.robot.Robot;
-import org.usfirst.frc.team4959.robot.auto.Delay;
+import org.usfirst.frc.team4959.robot.commands.Delay;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;

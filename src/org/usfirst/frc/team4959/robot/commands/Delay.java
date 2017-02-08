@@ -1,50 +1,41 @@
-package org.usfirst.frc.team4959.robot.auto;
+package org.usfirst.frc.team4959.robot.commands;
 
-import org.usfirst.frc.team4959.robot.RobotMap;
+import java.sql.Time;
 
-import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ *STREAKS
  */
-public class DriveForward extends Command {
-	private double speed;
-	private double time;
-	private Timer timer = new Timer();
+public class Delay extends Command {
+	private double seconds;
+	private Timer time = new Timer();
 
-	protected RobotDrive drive = RobotMap.driveTrain;
-
-	public DriveForward(double speed, double time) {
+	public Delay(double seconds) {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		this.speed = speed;
-		this.time = time;
-
+		this.seconds = seconds;
+		time.reset();
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		timer.start();
-
+		time.start();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		drive.arcadeDrive(speed, 0);
-
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		//System.out.println("Ryan");
-		return (timer.get() > time);
+		return (time.get() >= seconds);
 	}
 
 	// Called once after isFinished returns true
 	protected void end() {
-		timer.stop();
+		time.stop();
 	}
 
 	// Called when another command which requires one or more of the same

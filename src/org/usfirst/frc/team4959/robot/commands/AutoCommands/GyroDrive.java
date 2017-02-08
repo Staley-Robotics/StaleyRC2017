@@ -1,4 +1,4 @@
-package org.usfirst.frc.team4959.robot.auto;
+package org.usfirst.frc.team4959.robot.commands.AutoCommands;
 
 import java.awt.GradientPaint;
 
@@ -53,6 +53,8 @@ public class GyroDrive extends Command {
 		//gyro.reset(); booty cheecks at programming so we do this
 		//I think that it should be at both the start and the end.
 		robotDrive.drive(0, 0);
+		timer.stop();
+		timer.reset();
 
 	}
 

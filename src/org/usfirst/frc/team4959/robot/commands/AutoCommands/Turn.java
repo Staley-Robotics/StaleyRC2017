@@ -1,4 +1,4 @@
-package org.usfirst.frc.team4959.robot.auto;
+package org.usfirst.frc.team4959.robot.commands.AutoCommands;
 
 import org.usfirst.frc.team4959.robot.RobotMap;
 
@@ -23,23 +23,21 @@ public class Turn extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-
 		timer.start();
 	}
 
 	protected void execute() {
 		drive.arcadeDrive(0, turnSpeed);
-
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		System.out.println("Ryan");
 		return (timer.get() > time);
 	}
 
 	// Called once after isFinished returns true
 	protected void end() {
 		timer.stop();
+		timer.reset();
 	}
 }

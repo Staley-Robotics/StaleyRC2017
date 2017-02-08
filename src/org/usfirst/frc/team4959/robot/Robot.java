@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team4959.robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -8,8 +9,8 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team4959.robot.auto.Drive;
-import org.usfirst.frc.team4959.robot.auto.GyroTurning;
+import org.usfirst.frc.team4959.robot.commands.AutoCommands.GyroTurning;
+import org.usfirst.frc.team4959.robot.commands.AutoModes.Drive;
 import org.usfirst.frc.team4959.robot.commands.Climber.RunClimber;
 import org.usfirst.frc.team4959.robot.subsystems.Agrivator;
 import org.usfirst.frc.team4959.robot.subsystems.Climber;
@@ -57,7 +58,10 @@ public class Robot extends IterativeRobot {
 		auto = new SendableChooser();
 		auto.addObject("Default Auto", new Drive());
 		// auto.addDefault("My Auto", new Drive());
-		SmartDashboard.putData("Auto mode", auto);
+		SmartDashboard.putData("Auto", auto);
+		
+		//Grabs Camrea feed and sends it to Smartdashboard
+		CameraServer.getInstance().startAutomaticCapture();
 	}
 
 	/**
