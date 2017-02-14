@@ -1,4 +1,4 @@
-package org.usfirst.frc.team4959.robot.commands;
+package org.usfirst.frc.team4959.robot.commands.GearDrop;
 
 import org.usfirst.frc.team4959.robot.Robot;
 

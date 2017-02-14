@@ -1,7 +1,6 @@
 package org.usfirst.frc.team4959.robot.subsystems;
 
-import org.usfirst.frc.team4959.robot.commands.RunCompressor;
-import org.usfirst.frc.team4959.robot.commands.GearDrop.RunGearDrop;
+import org.usfirst.frc.team4959.robot.commands.GearDrop.RunCompressor;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -29,11 +28,11 @@ public class GearDrop extends Subsystem {
     }
     
     public void open() {
-    	solenoid.set(DoubleSolenoid.Value.kForward);
+    	solenoid.set(DoubleSolenoid.Value.kReverse);
     }
     
     public void close() {
-    	solenoid.set(DoubleSolenoid.Value.kReverse);
+    	solenoid.set(DoubleSolenoid.Value.kForward);
     }
 }
 

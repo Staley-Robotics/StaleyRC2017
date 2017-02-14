@@ -2,7 +2,8 @@ package org.usfirst.frc.team4959.robot;
 
 import org.usfirst.frc.team4959.robot.commands.Agrivator.RunAgrivator;
 import org.usfirst.frc.team4959.robot.commands.Climber.RunClimber;
-import org.usfirst.frc.team4959.robot.commands.GearDrop.RunGearDrop;
+import org.usfirst.frc.team4959.robot.commands.GearDrop.CloseDrop;
+import org.usfirst.frc.team4959.robot.commands.GearDrop.OpenDrop;
 import org.usfirst.frc.team4959.robot.commands.Intake.RunIntake;
 import org.usfirst.frc.team4959.robot.commands.Shooter.RunShooter;
 
@@ -53,8 +54,11 @@ public class OI {
 		Button runAgrivator = new JoystickButton(xboxController, RobotMap.BACK_BUTTON);
 		runAgrivator.whileActive(new RunAgrivator());
 		
-		Button dropGear = new JoystickButton(xboxController, RobotMap.START_BUTTON);
-		dropGear.whenPressed(new RunGearDrop(3.0));
+		Button openDrop = new JoystickButton(xboxController, RobotMap.RIGHT_BUMPER);
+		openDrop.whenPressed(new OpenDrop());
+		
+		Button closeDrop = new JoystickButton(xboxController, RobotMap.LEFT_BUMPER);
+		closeDrop.whenPressed(new CloseDrop());
 	}
 
 	public double getUp() {

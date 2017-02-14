@@ -3,70 +3,81 @@ package org.usfirst.frc.team4959.robot.commands.AutoCommands;
 import org.usfirst.frc.team4959.robot.Robot;
 import org.usfirst.frc.team4959.robot.RobotMap;
 import org.usfirst.frc.team4959.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team4959.robot.utill.JMath;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.PIDCommand;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 
 /**
- ***************
- * I Broke it * - julien *
- ***************
- * 
+ *  negative angle is left, positive angle is right
  */
 public class GyroTurning extends Command {
 	protected Gyro gyro = RobotMap.gyro;
 	protected DriveTrain drive = Robot.driveTrain;
 
 	double toAngle, speed;
-	double tolerance = 0.1;
-	private boolean isTurning = false;
+	double tolerance = 1.0;
+	public static double toAnglePass;
 
+	/*
+	 * angle - the target angle of the trun
+	 * speed - the power sent to the speed controller
+	 * toAnglePass - static variable to pass the toAngle through multiple classes as a static value
+	 */
 	public GyroTurning(double angle, double speed) {
-		// Use requires() het to declare subsystem dependencies
-		this.speed = JMath.clamp(speed, 0.6, 1);
-		this.toAngle = angle;
+		this.speed = speed;
+		this.toAngle = angle/1.5;
+		this.toAnglePass = angle;
 		requires(Robot.driveTrain);
-		//setInputRange(0,360);
 	}
-	
-	// Called just before this Command runs the first time
+
+
 	protected void initialize() {
-		//setSetpoint(toAngle);
 		gyro.reset();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		System.out.println("Excecute : " + gyro.getAngle() + " to" + toAngle);
-		if (Math.abs(gyro.getAngle()) >= Math.abs(toAngle)) {
-			isTurning = true;
-			drive.arcadeDrive(0, 0);
+		if (Math.abs(gyro.getAngle()) > Math.abs(Math.abs(toAngle) - tolerance)
+				&& (Math.abs(gyro.getAngle())) < Math.abs(Math.abs(toAngle) + tolerance)) {
 		}
-		if (Math.abs(gyro.getAngle()) > Math.abs(toAngle)) {
-			drive.arcadeDrive(0, speed);
-		} else if (Math.abs(gyro.getAngle()) < Math.abs(toAngle)) {
-			drive.arcadeDrive(0, -speed);
+
+		if (toAngle > 0) {
+			if (Math.abs(gyro.getAngle()) < Math.abs(Math.abs(toAngle) + tolerance)) {
+				drive.arcadeDrive(0, -speed);
+			}
+			 else {
+				 drive.arcadeDrive(0, 0);
+			 }
+		} else if (toAngle < 0) {
+			if (Math.abs(gyro.getAngle()) < Math.abs(Math.abs(toAngle) + tolerance)) {
+				drive.arcadeDrive(0, speed);
+			} else {
+				drive.arcadeDrive(0, 0);
+			}
 		} else {
 			drive.arcadeDrive(0, 0);
-			isTurning = true;
-		}		
+		}
+		System.out.println("Angle at the end of Execute: " + gyro.getAngle());
+		System.out.println("Goal: " + toAngle);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		System.out.println(gyro.getRate());
-		return isTurning;
+		if (Math.abs(gyro.getAngle()) > Math.abs(Math.abs(toAngle) - tolerance)
+				&& (Math.abs(gyro.getAngle())) < Math.abs(Math.abs(toAngle) + tolerance)) {
+			System.out.println("Turning has finished");
+			return true;
+		} else
+			return false;
 	}
 
 	protected void end() {
 		drive.stop();
-		
+		gyro.reset();
 	}
-	//Above does gyro turns.
-	
 
-	
-
+	public static double getToAngle() {
+		return toAnglePass;
+	}
 }

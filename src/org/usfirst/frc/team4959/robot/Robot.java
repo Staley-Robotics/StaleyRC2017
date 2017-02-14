@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team4959.robot;
 
+import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -9,13 +10,17 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team4959.robot.commands.GyroReset;
+import org.usfirst.frc.team4959.robot.commands.AutoCommands.Delay;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.GyroTurning;
-import org.usfirst.frc.team4959.robot.commands.AutoModes.Drive;
+import org.usfirst.frc.team4959.robot.commands.AutoModes.RightGearToBoiler;
+import org.usfirst.frc.team4959.robot.commands.AutoModes.CentGearToRightBoiler;
 import org.usfirst.frc.team4959.robot.commands.Climber.RunClimber;
 import org.usfirst.frc.team4959.robot.subsystems.Agrivator;
 import org.usfirst.frc.team4959.robot.subsystems.Climber;
 import org.usfirst.frc.team4959.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4959.robot.subsystems.GearDrop;
+import org.usfirst.frc.team4959.robot.subsystems.GripPipeline;
 import org.usfirst.frc.team4959.robot.subsystems.Intake;
 import org.usfirst.frc.team4959.robot.subsystems.Shooter;
 
@@ -27,21 +32,24 @@ import org.usfirst.frc.team4959.robot.subsystems.Shooter;
  * directory.
  */
 public class Robot extends IterativeRobot {
-//STREAKS
+	// STREAKS
 	// public static final ExampleSubsystem exampleSubsystem = new
 	// ExampleSubsystem();
-	
-	//    ***** Subsystems *****
+
+	// ***** Subsystems *****
+	public static final GripPipeline gripVision = new GripPipeline();
 	public static final GearDrop gearDrop = new GearDrop();
 	public static final Agrivator agrivator = new Agrivator();
 	public static final Intake intake = new Intake();
 	public static final Climber climber = new Climber();
 	public static final Shooter shooter = new Shooter();
 	public static final DriveTrain driveTrain = new DriveTrain();
-	
+
 	public static OI oi;
 	protected org.usfirst.frc.team4959.robot.commands.Drive.JoystickDrive JoystickDrive;
 	protected RunClimber startClimber;
+
+	// CameraServer server;
 
 	Command autonomousCommand;
 
@@ -55,13 +63,21 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		RobotMap.init();
 		oi = new OI();
-		auto = new SendableChooser();
-		auto.addObject("Default Auto", new Drive());
-		// auto.addDefault("My Auto", new Drive());
-		SmartDashboard.putData("Auto", auto);
+
 		
-		//Grabs Camrea feed and sends it to Smartdashboard
-		CameraServer.getInstance().startAutomaticCapture();
+		
+		
+		
+		auto = new SendableChooser();
+		auto.addDefault("Delay", new Delay(5));
+		auto.addObject("Center Gear to Boiler", new CentGearToRightBoiler());
+		auto.addObject("Right Gear to Boiler", new RightGearToBoiler());
+		SmartDashboard.putData("Autonomous Modes", auto);
+
+		// Grabs Camrea feed and sends it to Smartdashboard
+		// UsbCamera camera =
+		// CameraServer.getInstance().startAutomaticCapture();
+		// camera.setResolution(320, 240);
 	}
 
 	/**
@@ -107,7 +123,7 @@ public class Robot extends IterativeRobot {
 
 	}
 
- 	/**
+	/**
 	 * This function is called periodically during autonomous
 	 */
 	@Override
@@ -117,11 +133,6 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
-		
-		
-		
-		
-		
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
@@ -137,9 +148,13 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 
+		SmartDashboard.putData("Gyro", RobotMap.gyro);
+		SmartDashboard.putData("Reset Gyro", new GyroReset());
+
 		// double angle =
-		//SmartDashboard.putNumber("Angle", 50);
-	//	SmartDashboard.putData("Turn With Gyro", new GyroTurnning(SmartDashboard.getNumber("Angle")));
+		// SmartDashboard.putNumber("Angle", 50);
+		// SmartDashboard.putData("Turn With Gyro", new
+		// GyroTurnning(SmartDashboard.getNumber("Angle")));
 	}
 
 	/**

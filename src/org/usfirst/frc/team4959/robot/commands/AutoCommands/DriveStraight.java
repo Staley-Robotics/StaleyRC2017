@@ -1,6 +1,8 @@
 package org.usfirst.frc.team4959.robot.commands.AutoCommands;
 
+import org.usfirst.frc.team4959.robot.Robot;
 import org.usfirst.frc.team4959.robot.RobotMap;
+import org.usfirst.frc.team4959.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Timer;
@@ -9,14 +11,14 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveForward extends Command {
+public class DriveStraight extends Command {
 	private double speed;
 	private double time;
 	private Timer timer = new Timer();
 
-	protected RobotDrive drive = RobotMap.driveTrain;
+	protected DriveTrain drive = Robot.driveTrain;
 
-	public DriveForward(double speed, double time) {
+	public DriveStraight(double time, double speed) {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		this.speed = speed;
@@ -32,7 +34,8 @@ public class DriveForward extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		drive.arcadeDrive(speed, 0);
+//		drive.arcadeDrive(speed, 0);
+		drive.xboxTankDrive(speed*0.96, speed);
 
 	}
 

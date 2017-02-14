@@ -1,4 +1,4 @@
-package org.usfirst.frc.team4959.robot.commands;
+package org.usfirst.frc.team4959.robot.commands.AutoCommands;
 
 import java.sql.Time;
 
@@ -22,6 +22,7 @@ public class Delay extends Command {
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		time.start();
+		System.out.println("Delay has started");
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -30,7 +31,11 @@ public class Delay extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return (time.get() >= seconds);
+		if (time.get() >= seconds){
+			System.out.println("Delay has finished");
+			return true;
+		} else
+			return false;
 	}
 
 	// Called once after isFinished returns true
