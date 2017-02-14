@@ -55,6 +55,9 @@ public class CentGearToRightBoiler extends CommandGroup {
 		// yolo it
 		
 		// skrt skrt
+		addSequential(new DriveStraight(0.5, -0.8));
+		addSequential(new GyroTurning(24, 0.6));
+		addSequential(new DriveStraight(0.3, -1.0));
 	}
 
 }
