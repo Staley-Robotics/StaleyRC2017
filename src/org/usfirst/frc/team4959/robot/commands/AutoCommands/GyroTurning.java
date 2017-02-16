@@ -16,7 +16,7 @@ public class GyroTurning extends Command {
 	protected DriveTrain drive = Robot.driveTrain;
 
 	double toAngle, speed;
-	double tolerance = 1.0;
+	double tolerance = 1.5;
 	public static double toAnglePass;
 
 	/*
@@ -26,9 +26,15 @@ public class GyroTurning extends Command {
 	 */
 	public GyroTurning(double angle, double speed) {
 		this.speed = speed;
-		this.toAngle = angle/1.5;
+		this.toAngle = angle;
 		this.toAnglePass = angle;
 		requires(Robot.driveTrain);
+	}
+	
+	public static void gyroCap(double goalAngle, Gyro gyro2){
+		if(Math.abs(goalAngle) > Math.abs(360)){
+			gyro2.reset();
+		}
 	}
 
 
@@ -45,18 +51,28 @@ public class GyroTurning extends Command {
 		if (toAngle > 0) {
 			if (Math.abs(gyro.getAngle()) < Math.abs(Math.abs(toAngle) + tolerance)) {
 				drive.arcadeDrive(0, -speed);
-			}
-			 else {
+				GyroTurning.gyroCap(gyro.getAngle(), gyro);
+			} else if (Math.abs(gyro.getAngle()) < Math.abs(Math.abs(toAngle) + tolerance)) {
+				drive.arcadeDrive(0, speed);
+				GyroTurning.gyroCap(gyro.getAngle(), gyro);
+			} else {
 				 drive.arcadeDrive(0, 0);
+					GyroTurning.gyroCap(gyro.getAngle(), gyro);
 			 }
 		} else if (toAngle < 0) {
 			if (Math.abs(gyro.getAngle()) < Math.abs(Math.abs(toAngle) + tolerance)) {
 				drive.arcadeDrive(0, speed);
+				GyroTurning.gyroCap(gyro.getAngle(), gyro);
+			} else if (Math.abs(gyro.getAngle()) < Math.abs(Math.abs(toAngle) + tolerance)) {
+				drive.arcadeDrive(0, -speed);
+				GyroTurning.gyroCap(gyro.getAngle(), gyro);
 			} else {
 				drive.arcadeDrive(0, 0);
+				GyroTurning.gyroCap(gyro.getAngle(), gyro);
 			}
 		} else {
 			drive.arcadeDrive(0, 0);
+			GyroTurning.gyroCap(gyro.getAngle(), gyro);
 		}
 		System.out.println("Angle at the end of Execute: " + gyro.getAngle());
 		System.out.println("Goal: " + toAngle);

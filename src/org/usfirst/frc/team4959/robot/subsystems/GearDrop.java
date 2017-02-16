@@ -14,7 +14,9 @@ public class GearDrop extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-	DoubleSolenoid solenoid = new DoubleSolenoid(0,1);
+	DoubleSolenoid openGear = new DoubleSolenoid(0, 1);
+	DoubleSolenoid outLeft = new DoubleSolenoid(2, 3);
+	DoubleSolenoid outRight = new DoubleSolenoid(4, 5);
 	Compressor compressor = new Compressor(0);
 
     public void initDefaultCommand() {
@@ -28,11 +30,21 @@ public class GearDrop extends Subsystem {
     }
     
     public void open() {
-    	solenoid.set(DoubleSolenoid.Value.kReverse);
+    	openGear.set(DoubleSolenoid.Value.kReverse);
     }
     
     public void close() {
-    	solenoid.set(DoubleSolenoid.Value.kForward);
+    	openGear.set(DoubleSolenoid.Value.kForward);
+    }
+    
+    public void extend() {
+    	outLeft.set(DoubleSolenoid.Value.kReverse);
+    	outRight.set(DoubleSolenoid.Value.kReverse);
+    }
+    
+    public void retract() {
+    	outLeft.set(DoubleSolenoid.Value.kForward);
+    	outRight.set(DoubleSolenoid.Value.kForward);
     }
 }
 

@@ -18,7 +18,11 @@ Y Button: Intake (Takes balls into the bot)
 
 Back Button (<): Loads balls for shooting
 
-Start Button (>): Drops Gear [UNTESTED] (drops gear then waits 3 seconds to close gear holder)
+Left Bumper: Close Gear Drop
+
+Right Bumper: Open Gear Drop
+
+Left Joy Stick press: Extend Gear Drop while held, when released retracts Gear Drop
 
 # Ports
 Look at "***** Motor/Speed Controller Ports *****" inside RobotMap.java

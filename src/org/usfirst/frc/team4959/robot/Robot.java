@@ -64,10 +64,6 @@ public class Robot extends IterativeRobot {
 		RobotMap.init();
 		oi = new OI();
 
-		
-		
-		
-		
 		auto = new SendableChooser();
 		auto.addDefault("Delay", new Delay(5));
 		auto.addObject("Center Gear to Boiler", new CentGearToRightBoiler());
@@ -75,9 +71,9 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Autonomous Modes", auto);
 
 		// Grabs Camrea feed and sends it to Smartdashboard
-		// UsbCamera camera =
-		// CameraServer.getInstance().startAutomaticCapture();
-		// camera.setResolution(320, 240);
+		 UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+		 camera.setResolution(320, 240);
+//		 CameraServer.getInstance().removeServer("cam0");
 	}
 
 	/**

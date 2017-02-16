@@ -3,7 +3,9 @@ package org.usfirst.frc.team4959.robot;
 import org.usfirst.frc.team4959.robot.commands.Agrivator.RunAgrivator;
 import org.usfirst.frc.team4959.robot.commands.Climber.RunClimber;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.CloseDrop;
+import org.usfirst.frc.team4959.robot.commands.GearDrop.ExtendDrop;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.OpenDrop;
+import org.usfirst.frc.team4959.robot.commands.GearDrop.RetractDrop;
 import org.usfirst.frc.team4959.robot.commands.Intake.RunIntake;
 import org.usfirst.frc.team4959.robot.commands.Shooter.RunShooter;
 
@@ -59,6 +61,12 @@ public class OI {
 		
 		Button closeDrop = new JoystickButton(xboxController, RobotMap.LEFT_BUMPER);
 		closeDrop.whenPressed(new CloseDrop());
+		
+		Button extendDrop = new JoystickButton(xboxController, RobotMap.LEFT_STICK_BUTTON);
+		extendDrop.whileHeld(new ExtendDrop());
+		
+		Button retractDrop = new JoystickButton(xboxController, RobotMap.RIGHT_STICK_BUTTON);
+		retractDrop.whenReleased(new RetractDrop());
 	}
 
 	public double getUp() {

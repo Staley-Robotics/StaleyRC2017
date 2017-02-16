@@ -43,6 +43,8 @@ public class DriveTrain extends Subsystem {
 	public void worldOfTanksDrive(double forward, double backward, double rotate) {
 		double speedModifier = 0.7;
 		double turnSpeedModifier = 0.7;
+		
+		System.out.println(gyro.getAngle());
 
 		if (backward * speedModifier > 0) {
 			drive.arcadeDrive(-backward * speedModifier, rotate * turnSpeedModifier);

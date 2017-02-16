@@ -3,10 +3,12 @@ package org.usfirst.frc.team4959.robot;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.GyroTurning;
 import org.usfirst.frc.team4959.robot.subsystems.Climber;
 
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.interfaces.Gyro;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -44,6 +46,9 @@ public class RobotMap {
 
 	public static final int BACK_BUTTON = 7;
 	public static final int START_BUTTON = 8;
+	
+	public static final int LEFT_STICK_BUTTON = 9;
+	public static final int RIGHT_STICK_BUTTON = 10;
 
 	public static final int A_BUTTON = 1;
 	public static final int B_BUTTON = 2;
@@ -82,7 +87,8 @@ public class RobotMap {
 
 	// ***** Other Devices *****
 
-	public static AnalogGyro gyro = new AnalogGyro(GYRO_PORT);
+//	public static AnalogGyro gyro = new AnalogGyro(GYRO_PORT);
+	public static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
 
 	// ***** Drive Train *****
 
@@ -90,12 +96,5 @@ public class RobotMap {
 
 	public static void init() {
 		driveTrain.setSafetyEnabled(false);
-		if (GyroTurning.getToAngle() == 90) {
-			gyro.setSensitivity(0.008);
-		}
-		if (GyroTurning.getToAngle() == 45) {
-			gyro.setSensitivity(0.005);
-		}
 	}
-
 }

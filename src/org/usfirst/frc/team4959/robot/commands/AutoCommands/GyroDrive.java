@@ -30,6 +30,7 @@ public class GyroDrive extends Command {
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		gyro.reset();
+		timer.reset();
 		timer.start();
 	}
 
@@ -55,7 +56,7 @@ public class GyroDrive extends Command {
 		robotDrive.drive(0, 0);
 		timer.stop();
 		timer.reset();
-
+		gyro.reset();
 	}
 
 	// Called when another command which requires one or more of the same
