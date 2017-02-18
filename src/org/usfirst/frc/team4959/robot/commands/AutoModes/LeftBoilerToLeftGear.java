@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4959.robot.commands.AutoModes;
 
+import org.usfirst.frc.team4959.robot.commands.AutoCommands.AutoLoadAndShoot;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.DriveStraight;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.GyroDrive;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.GyroTurning;
@@ -7,7 +8,6 @@ import org.usfirst.frc.team4959.robot.commands.GearDrop.CloseDrop;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.ExtendDrop;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.OpenDrop;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.RetractDrop;
-import org.usfirst.frc.team4959.robot.commands.Shooter.LoadAndShoot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -15,13 +15,17 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  *
  */
 public class LeftBoilerToLeftGear extends CommandGroup {
+	
+	// GyroDrive(Time, Speed)
+	// GyroTurning(Turn, Speed)
+	// DriveStraight(Time, Speed)
 
 	public LeftBoilerToLeftGear() {
 
 		// Turn into the boiler (Drive straight and let it curve into it)
 
 		// Shoot
-		addSequential(new LoadAndShoot());
+		addSequential(new AutoLoadAndShoot());
 
 		// Back up about a foot
 		addSequential(new GyroDrive(0.5, -0.5));

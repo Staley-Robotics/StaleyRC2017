@@ -1,20 +1,16 @@
 package org.usfirst.frc.team4959.robot.commands.AutoCommands;
 
-import java.sql.Time;
-
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *STREAKS
+ * Delays in time for given amount of seconds
  */
 public class Delay extends Command {
 	private double seconds;
 	private Timer time = new Timer();
 
 	public Delay(double seconds) {
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
 		this.seconds = seconds;
 		time.reset();
 	}
@@ -31,11 +27,7 @@ public class Delay extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		if (time.get() >= seconds){
-			System.out.println("Delay has finished");
-			return true;
-		} else
-			return false;
+		return (time.get() > seconds);
 	}
 
 	// Called once after isFinished returns true

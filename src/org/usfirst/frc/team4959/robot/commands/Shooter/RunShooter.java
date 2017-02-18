@@ -10,37 +10,34 @@ import edu.wpi.first.wpilibj.command.Command;
  * Runs the shooter motor
  */
 public class RunShooter extends Command {
-	//The speed at which the motor is moving/The amount of power the motor is using
 	private final double SPEED = -0.9;
-	
-    public RunShooter() {
-        // Use requires() here to declare subsystem dependencies
-    	requires(Robot.shooter);
-    }
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    	Robot.shooter.isRunning = true;
-    }
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	Robot.shooter.runShooter(SPEED);
-    }
+	public RunShooter() {
+		requires(Robot.shooter);
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-    	return false;
-    }
+	// Called just before this Command runs the first time
+	protected void initialize() {
+	}
 
-    // Called once after isFinished returns true
-    protected void end() {
-//    	Robot.shooter.stopShooter();
-    	Robot.shooter.isRunning = false;
-    }
+	// Called repeatedly when this Command is scheduled to run
+	protected void execute() {
+		Robot.shooter.runShooter(SPEED);
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    	Robot.shooter.stopShooter();
-    }
+	// Make this return true when this Command no longer needs to run execute()
+	protected boolean isFinished() {
+		return false;
+	}
+
+	// Called once after isFinished returns true
+	protected void end() {
+		// Robot.shooter.stopShooter();
+	}
+
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	protected void interrupted() {
+		Robot.shooter.stopShooter();
+	}
 }

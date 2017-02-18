@@ -1,6 +1,5 @@
 package org.usfirst.frc.team4959.robot;
 
-import org.usfirst.frc.team4959.robot.commands.Agrivator.RunAgrivator;
 import org.usfirst.frc.team4959.robot.commands.Climber.RunClimber;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.CloseDrop;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.ExtendDrop;
@@ -10,7 +9,6 @@ import org.usfirst.frc.team4959.robot.commands.GearDrop.ShifterOff;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.ShifterOn;
 import org.usfirst.frc.team4959.robot.commands.Intake.RunIntake;
 import org.usfirst.frc.team4959.robot.commands.Shooter.LoadAndShoot;
-import org.usfirst.frc.team4959.robot.commands.Shooter.RunShooter;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
@@ -22,29 +20,22 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-
-	//// CREATING BUTTONS
-	// One type of button is a joystick button which is any button on a
-	//// joystick.
-	// You create one by telling it which joystick it's on and which button
-	// number it is.
-	// Joystick stick = new Joystick(port);
-	// Button button = new JoystickButton(stick, buttonNumber);
+	
 	public static XboxController xcController;
 	public static Joystick xboxController;
 	public static Joystick joystick;
 
 	public OI() {
 
-		// ***** X-Box Controller *****
+	// ***** X-Box Controller *****
 		xboxController = new Joystick(RobotMap.XBOX_PORT);
 
 		
-		// ***** Joystick *****
+	// ***** Joystick *****
 		joystick = new Joystick(RobotMap.JOYSTICK_PORT);
 
 		
-		// ***** Bound Buttons *****
+	// ***** Bound Buttons *****
 		// Run Shooter
 		Button runShooter = new JoystickButton(xboxController, RobotMap.A_BUTTON);
 		runShooter.toggleWhenPressed(new LoadAndShoot());
@@ -75,9 +66,8 @@ public class OI {
 		Button openDrop = new JoystickButton(xboxController, RobotMap.LEFT_BUMPER);
 		openDrop.whenPressed(new OpenDrop());
 		openDrop.whenReleased(new CloseDrop());
-
 	}
-
+	
 	public double getUp() {
 		return xboxController.getPOV(1);
 	}
@@ -86,16 +76,20 @@ public class OI {
 		return xboxController.getPOV(5);
 	}
 
+	// Returns the value of the Left Trigger on the XBOX Controller
 	public double getLeftTrigger() {
 		return xboxController.getRawAxis(RobotMap.LEFT_TRIGGER);
 	}
 
+	// Returns the value of the Right Trigger on the XBOX Controller
 	public double getRightTrigger() {
 		return xboxController.getRawAxis(RobotMap.RIGHT_TRIGGER);
 	}
 
+	// Returns the X-Axis value of the Left Stick on the XBOX Controller
 	public double getLeftStickX() {
 		return xboxController.getRawAxis(RobotMap.LEFT_X_AXIS);
 	}
+
 
 }

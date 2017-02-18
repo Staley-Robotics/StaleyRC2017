@@ -5,13 +5,11 @@ import org.usfirst.frc.team4959.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ *	Extends the gear drop extension
  */
 public class ExtendDrop extends Command {
 
     public ExtendDrop() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time

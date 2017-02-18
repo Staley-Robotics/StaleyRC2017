@@ -9,39 +9,35 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ *	Drives straight for an amount of time
  */
 public class DriveStraight extends Command {
+
 	private double speed;
+	private double speedModifier;
 	private double time;
 	private Timer timer = new Timer();
 
 	protected DriveTrain drive = Robot.driveTrain;
 
 	public DriveStraight(double time, double speed) {
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
 		this.speed = speed;
 		this.time = time;
-
+		speedModifier = 0.96;
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		timer.start();
-
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-//		drive.arcadeDrive(speed, 0);
-		drive.xboxTankDrive(speed*0.96, speed);
-
+		drive.tankDrive(speed * speedModifier, speed);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		//System.out.println("Ryan");
 		return (timer.get() > time);
 	}
 

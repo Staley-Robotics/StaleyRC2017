@@ -1,14 +1,9 @@
 package org.usfirst.frc.team4959.robot;
 
-import org.usfirst.frc.team4959.robot.commands.AutoCommands.GyroTurning;
-import org.usfirst.frc.team4959.robot.subsystems.Climber;
-
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.interfaces.Gyro;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -17,23 +12,13 @@ import edu.wpi.first.wpilibj.interfaces.Gyro;
  * floating around.
  */
 public class RobotMap {
-	// For example to map the left and right motors, you could define the
-	// following variables to use with your drivetrain subsystem.
-	// public static int leftMotor = 1;
-	// public static int rightMotor = 2;
 
-	// If you are using multiple modules, make sure to define both the port
-	// number and the module. For example you with a rangefinder:
-	// public static int rangefinderPort = 1;
-	// public static int rangefinderModule = 1;
-
-	// ***** HID Controllers *****
-
+// ***** HID Controllers *****
 	public static final int XBOX_PORT = 0;
 	public static final int JOYSTICK_PORT = 1;
 
-	// ***** HID Controller Buttons/Joysticks *****
-
+	
+// ***** HID Controller Buttons/Joysticks *****
 	public static final int LEFT_X_AXIS = 0;
 	public static final int LEFT_Y_AXIS = 1;
 	public static final int RIGHT_X_AXIS = 4;
@@ -57,8 +42,8 @@ public class RobotMap {
 
 	public static final int JOYSTICK_Y = 1;
 
-	// ***** Motor/Speed Controller Ports *****
-
+	
+// ***** Motor/Speed Controller Ports *****
 	public static final int FRONT_LEFT_DRIVE_MOTOR_PORT = 4;
 	public static final int BACK_LEFT_DRIVE_MOTOR_PORT = 5;
 	public static final int FRONT_RIGHT_DRIVE_MOTOR_PORT = 0;
@@ -72,8 +57,8 @@ public class RobotMap {
 
 	public static final int GYRO_PORT = 0;
 
-	// ***** Speed Controllers *****
-
+	
+// ***** Speed Controllers *****
 	public static SpeedController flDriveMotor = new Talon(FRONT_LEFT_DRIVE_MOTOR_PORT);
 	public static SpeedController blDriveMotor = new Talon(BACK_LEFT_DRIVE_MOTOR_PORT);
 	public static SpeedController frDriveMotor = new Talon(FRONT_RIGHT_DRIVE_MOTOR_PORT);
@@ -85,15 +70,16 @@ public class RobotMap {
 
 	public static SpeedController climerMotor = new Talon(CLIMBER_PORT);
 
-	// ***** Other Devices *****
-
-//	public static AnalogGyro gyro = new AnalogGyro(GYRO_PORT);
+	
+// ***** Other Devices *****
 	public static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
 
-	// ***** Drive Train *****
-
+	
+// ***** Drive Train *****
 	public static RobotDrive driveTrain = new RobotDrive(flDriveMotor, blDriveMotor, frDriveMotor, brDriveMotor);
 
+	
+	// Sets Safety Enabled to False so it prevents some error. Idk what it does.
 	public static void init() {
 		driveTrain.setSafetyEnabled(false);
 	}

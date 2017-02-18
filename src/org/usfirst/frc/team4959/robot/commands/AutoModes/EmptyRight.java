@@ -1,6 +1,5 @@
 package org.usfirst.frc.team4959.robot.commands.AutoModes;
 
-import org.usfirst.frc.team4959.robot.commands.AutoCommands.Delay;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.DriveStraight;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.GyroDrive;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.GyroTurning;
@@ -16,32 +15,32 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class EmptyRight extends CommandGroup {
 
-    public EmptyRight() {
+	// GyroDrive(Time, Speed)
+	// GyroTurning(Turn, Speed)
+	// DriveStraight(Time, Speed)
 
-		// GyroDrive(Time, Speed)
-		// GyroTurning(Turn, Speed)
-		// DriveStraight(Time, Speed)
+	public EmptyRight() {
 
-		// ** Drive Forward **
+		// Drive Forward
 		addSequential(new GyroDrive(1.6, 0.5));
 
-		// ** Turn to gear **
+		// Turn to gear
 		addSequential(new GyroTurning(-15, 6));
 
-		// ** Drive to gear **
+		// Drive to gear
 		addSequential(new DriveStraight(0.6, 0.4));
 
-		// ** Drop Gear **
+		// Drop Gear
 		addSequential(new ExtendDrop());
 		addSequential(new OpenDrop());
 		addSequential(new RetractDrop());
 
-		// ** Back up **
+		// Back up
 		addSequential(new GyroDrive(0.2, -0.7));
 		addParallel(new GyroTurning(-75, 0.7));
 		addSequential(new GyroDrive(0.5, -0.5));
 		addParallel(new CloseDrop());
 		addSequential(new GyroTurning(-10, 0.1));
 		addSequential(new GyroDrive(0.8, -0.6));
-    }
+	}
 }

@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.Delay;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.GyroReset;
-import org.usfirst.frc.team4959.robot.commands.AutoCommands.GyroTurning;
 import org.usfirst.frc.team4959.robot.commands.AutoModes.RightGearToBoiler;
 import org.usfirst.frc.team4959.robot.commands.AutoModes.CentGearToRightBoiler;
 import org.usfirst.frc.team4959.robot.commands.AutoModes.EmptyLeft;
@@ -36,9 +35,6 @@ import org.usfirst.frc.team4959.robot.subsystems.Shooter;
  * directory.
  */
 public class Robot extends IterativeRobot {
-	// STREAKS
-	// public static final ExampleSubsystem exampleSubsystem = new
-	// ExampleSubsystem();
 
 	// ***** Subsystems *****
 	public static final GripPipeline gripVision = new GripPipeline();
@@ -52,9 +48,8 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	protected org.usfirst.frc.team4959.robot.commands.Drive.JoystickDrive JoystickDrive;
 	protected RunClimber startClimber;
-
-	// CameraServer server;
-
+	
+	
 	Command autonomousCommand;
 
 	SendableChooser<Command> auto = new SendableChooser<>();
@@ -68,7 +63,8 @@ public class Robot extends IterativeRobot {
 		RobotMap.init();
 		oi = new OI();
 
-		auto = new SendableChooser();
+		// SmartDashboard Autonomous Choices
+		auto = new SendableChooser<Command>();
 		auto.addDefault("Delay", new Delay(5));
 		auto.addObject("Left Empty", new EmptyLeft());
 		auto.addObject("Right Empty", new EmptyRight());
@@ -79,8 +75,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Autonomous Modes", auto);
 
 		// Grabs Camrea feed and sends it to Smartdashboard
-		 UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-		 camera.setResolution(320, 240);
+//		 UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+//		 camera.setResolution(320, 240);
 //		 CameraServer.getInstance().removeServer("cam0");
 	}
 
@@ -91,7 +87,6 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void disabledInit() {
-
 	}
 
 	@Override
@@ -114,17 +109,9 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		autonomousCommand = auto.getSelected();
 
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
-
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();
-
 	}
 
 	/**
@@ -154,11 +141,6 @@ public class Robot extends IterativeRobot {
 
 		SmartDashboard.putData("Gyro", RobotMap.gyro);
 		SmartDashboard.putData("Reset Gyro", new GyroReset());
-
-		// double angle =
-		// SmartDashboard.putNumber("Angle", 50);
-		// SmartDashboard.putData("Turn With Gyro", new
-		// GyroTurnning(SmartDashboard.getNumber("Angle")));
 	}
 
 	/**

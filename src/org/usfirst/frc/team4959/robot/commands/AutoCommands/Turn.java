@@ -6,18 +6,22 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
+/**
+ * Turns the robot for an amount of time
+ */
+
 public class Turn extends Command {
+
 	private double turnSpeed;
 	public double time;
 	private Timer timer;
+
 	protected RobotDrive drive = RobotMap.driveTrain;
 
 	public Turn(double turnSpeed, double time) {
 		this.turnSpeed = turnSpeed;
 		this.time = time;
 
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
 		timer = new Timer();
 	}
 
@@ -26,6 +30,7 @@ public class Turn extends Command {
 		timer.start();
 	}
 
+	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		drive.arcadeDrive(0, turnSpeed);
 	}

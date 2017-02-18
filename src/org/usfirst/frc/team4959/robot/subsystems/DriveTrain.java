@@ -12,31 +12,18 @@ import edu.wpi.first.wpilibj.interfaces.Gyro;
  * Controls basic drive functionality of the robot
  */
 public class DriveTrain extends Subsystem {
+	
 	RobotDrive drive = RobotMap.driveTrain;
-
-	// Put methods for controlling this subsystem
-	// here. Call these from Commands.
-
-	private Gyro gyro;
 
 	public void initDefaultCommand() {
 		setDefaultCommand(new JoystickDrive(1));
-		this.gyro = RobotMap.gyro;
-	}
-
-	public void driveStraight(double move) {
-		drive.arcadeDrive(move * 0.5, move);
 	}
 
 	public void arcadeDrive(double forward, double turn){
 		drive.arcadeDrive(forward, turn);
 	}
-	
-	public void arcadeMovement(Joystick j) {
-		drive.arcadeDrive(j.getThrottle(), 0);
-	}
 
-	public void xboxTankDrive(double left, double right) {
+	public void tankDrive(double left, double right) {
 		drive.tankDrive(left, right);
 	}
 
@@ -44,22 +31,12 @@ public class DriveTrain extends Subsystem {
 		double speedModifier = 0.7;
 		double turnSpeedModifier = 0.7;
 		
-		System.out.println(gyro.getAngle());
-
 		if (backward * speedModifier > 0) {
 			drive.arcadeDrive(-backward * speedModifier, rotate * turnSpeedModifier);
 		} else if (forward > 0) {
 			drive.arcadeDrive(forward * speedModifier, rotate * turnSpeedModifier);
 		} else {
 			drive.arcadeDrive(0, rotate * turnSpeedModifier);
-		}
-	}
-
-	public double get180() {
-		if (gyro.getAngle() <= 180)
-			return gyro.getAngle();
-		else {
-			return gyro.getAngle() - 360;
 		}
 	}
 

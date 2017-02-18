@@ -12,46 +12,48 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class GearDrop extends Subsystem {
 
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
-	
-	DoubleSolenoid openGear = new DoubleSolenoid(0, 1);
-	DoubleSolenoid outLeft = new DoubleSolenoid(2, 3);
-	Solenoid dropOut = new Solenoid(4);
+	DoubleSolenoid gearDrop = new DoubleSolenoid(0, 1);
+	DoubleSolenoid gearDropExtender = new DoubleSolenoid(2, 3);
+	Solenoid shifter = new Solenoid(4);
 	Compressor compressor = new Compressor(0);
 
-    public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new RunCompressor());
-    }
-    
-    public void runCompressor() {
-    	compressor.setClosedLoopControl(true);
-    }
-    
-    public void open() {
-    	openGear.set(DoubleSolenoid.Value.kReverse);
-    }
-    
-    public void close() {
-    	openGear.set(DoubleSolenoid.Value.kForward);
-    }
-    
-    public void extend() {
-    	outLeft.set(DoubleSolenoid.Value.kReverse);
-    }
-    
-    public void retract() {
-    	outLeft.set(DoubleSolenoid.Value.kForward);
-    }
-    
-    public void shifterOn() {
-    	dropOut.set(true);
-    }
-    
-    public void shifterOff() {
-    	dropOut.set(false);
-    }
-}
+	public void initDefaultCommand() {
+		setDefaultCommand(new RunCompressor());
+	}
 
+	// Runs the compressor until the sensor says "Stop don't run anymore" and then it stops
+	public void runCompressor() {
+		compressor.setClosedLoopControl(true);
+	}
+
+	// Opens the Gear Drop
+	public void open() {
+		gearDrop.set(DoubleSolenoid.Value.kReverse);
+	}
+
+	// Closes the Gear Drop
+	public void close() {
+		gearDrop.set(DoubleSolenoid.Value.kForward);
+	}
+
+	// Extends the Gear Drop outward
+	public void extend() {
+		gearDropExtender.set(DoubleSolenoid.Value.kReverse);
+	}
+
+	// Retracts the Gear Drop inward
+	public void retract() {
+		gearDropExtender.set(DoubleSolenoid.Value.kForward);
+	}
+
+	// Shifts the gearbox up
+	public void shifterOn() {
+		shifter.set(true);
+	}
+
+	// Shifts the gearbox down
+	public void shifterOff() {
+		shifter.set(false);
+	}
+
+}

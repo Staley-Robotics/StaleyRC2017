@@ -5,13 +5,12 @@ import org.usfirst.frc.team4959.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Runs the motor that turns on the climber so the robot can climb the rope
  */
 public class RunClimber extends Command {
 	private int speed;
 
 	public RunClimber(int speed) {
-		// Use requires() here to declare subsystem dependencies
 		this.speed = speed;
 		requires(Robot.climber);
 	}

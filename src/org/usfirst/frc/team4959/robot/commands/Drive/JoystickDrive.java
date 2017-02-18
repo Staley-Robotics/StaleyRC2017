@@ -4,10 +4,9 @@ import org.usfirst.frc.team4959.robot.Robot;
 import org.usfirst.frc.team4959.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
- * Enables Joystick control of robot (x box in this case)
+ * Allows user to drive robot with xbox controller
  */
 public class JoystickDrive extends Command {
 
@@ -15,8 +14,6 @@ public class JoystickDrive extends Command {
 	private double speedModifier = 1;
 
 	public JoystickDrive(double speedModifier) {
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
 		this.speedModifier = speedModifier;
 		requires(Robot.driveTrain);
 	}
@@ -29,7 +26,7 @@ public class JoystickDrive extends Command {
 	protected void execute() {
 		Robot.driveTrain.worldOfTanksDrive(Robot.oi.getRightTrigger() * speedModifier,
 				Robot.oi.getLeftTrigger() * speedModifier, Robot.oi.getLeftStickX() * speedModifier);
-		
+
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

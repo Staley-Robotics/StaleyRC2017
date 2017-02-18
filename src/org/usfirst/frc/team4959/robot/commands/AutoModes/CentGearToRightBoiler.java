@@ -1,25 +1,19 @@
 package org.usfirst.frc.team4959.robot.commands.AutoModes;
 
-import org.usfirst.frc.team4959.robot.Robot;
-import org.usfirst.frc.team4959.robot.RobotMap;
-import org.usfirst.frc.team4959.robot.commands.AutoCommands.AutoRunAgrivator;
-import org.usfirst.frc.team4959.robot.commands.AutoCommands.AutoRunShooter;
+import org.usfirst.frc.team4959.robot.commands.AutoCommands.AutoLoadAndShoot;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.Delay;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.DriveStraight;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.GyroDrive;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.GyroTurning;
-import org.usfirst.frc.team4959.robot.commands.AutoCommands.Turn;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.CloseDrop;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.ExtendDrop;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.OpenDrop;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.RetractDrop;
-import org.usfirst.frc.team4959.robot.commands.Shooter.LoadAndShoot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
- * Hits the gear drop, drops gear, goes to boiler and unloads balls.
+ * 
  */
 public class CentGearToRightBoiler extends CommandGroup {
 
@@ -64,17 +58,13 @@ public class CentGearToRightBoiler extends CommandGroup {
 		addSequential(new DriveStraight(0.1, 0));
 
 		// Shoot
-		addSequential(new LoadAndShoot());
+		addSequential(new AutoLoadAndShoot());
 
 		// yolo it
-		addSequential(new Delay(3));
 
 		// skrt skrt
 		addSequential(new DriveStraight(0.5, -0.7));
 		addSequential(new GyroTurning(24, 0.6));
-		System.out.println("Turn skrt skrt");
 		addSequential(new DriveStraight(0.3, -1.0));
-		System.out.println("skrt skrt finished");
 	}
-
 }

@@ -1,59 +1,50 @@
 package org.usfirst.frc.team4959.robot.commands.AutoCommands;
 
-import org.usfirst.frc.team4959.robot.RobotMap;
+import org.usfirst.frc.team4959.robot.Robot;
+import org.usfirst.frc.team4959.robot.commands.Agrivator.RunAgrivator;
+import org.usfirst.frc.team4959.robot.commands.Shooter.RunShooter;
 
-import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.interfaces.Gyro;
 
 /**
- * Drives straight for an amount of time using the gyro
+ *	Runs the RunShooter and RunAgrivator for an amount of time
  */
-public class GyroDrive extends Command {
-
-	private double kp = 0.03;
+public class AutoLoadAndShoot extends Command {
 	private Timer timer = new Timer();
-	private double time, speed;
-	
-	private Gyro gyro = RobotMap.gyro;
-	private RobotDrive robotDrive = RobotMap.driveTrain;
-	
+	private double time = 5;
+	private final double SHOOTER_SPEED = -0.9;
+	private final double AGRIVATOR_SPEED = 0.5;
 
-	public GyroDrive(double time, double speed) {
-		this.time = time;
-		this.speed = speed;
+	public AutoLoadAndShoot() {
+		timer.reset();
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		gyro.reset();
-		timer.reset();
 		timer.start();
+		
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		double currentAngle = gyro.getAngle();
-		robotDrive.drive(speed, -currentAngle * kp);
+		Robot.agrivator.runAgrivator(AGRIVATOR_SPEED);
+		Robot.shooter.runShooter(SHOOTER_SPEED);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return timer.get() >= time;
-	}
+		return (timer.get() > time);	
+}
 
 	// Called once after isFinished returns true
 	protected void end() {
-		robotDrive.drive(0, 0);
-		timer.stop();
-		timer.reset();
-		gyro.reset();
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
-		end();
+		Robot.agrivator.stopAgrivator();
+		Robot.shooter.stopShooter();
 	}
 }
