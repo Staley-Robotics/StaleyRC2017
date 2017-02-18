@@ -27,7 +27,7 @@ public class DriveTrain extends Subsystem {
 		drive.tankDrive(left, right);
 	}
 
-	public void worldOfTanksDrive(double forward, double backward, double rotate) {
+	public void worldOfTanksDrive(double backward, double forward, double rotate) {
 		double speedModifier = 0.7;
 		double turnSpeedModifier = 0.7;
 		

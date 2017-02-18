@@ -3,6 +3,7 @@ package org.usfirst.frc.team4959.robot;
 import org.usfirst.frc.team4959.robot.commands.Climber.RunClimber;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.CloseDrop;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.ExtendDrop;
+import org.usfirst.frc.team4959.robot.commands.GearDrop.GearDropToggle;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.OpenDrop;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.RetractDrop;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.ShifterOff;
@@ -52,12 +53,6 @@ public class OI {
 		Button runIntake = new JoystickButton(xboxController, RobotMap.Y_BUTTON);
 		runIntake.whileHeld(new RunIntake());
 
-		// Extend Drop
-		Button extendDrop = new JoystickButton(xboxController, RobotMap.BACK_BUTTON);
-		// Maybe switch back to whileHeld
-		extendDrop.whenPressed(new ExtendDrop());
-		extendDrop.whenReleased(new RetractDrop());
-
 		// Raise Climber
 		Button raiseClimb = new JoystickButton(xboxController, RobotMap.RIGHT_BUMPER);
 		raiseClimb.whileActive(new RunClimber(1));
@@ -66,6 +61,10 @@ public class OI {
 		Button openDrop = new JoystickButton(xboxController, RobotMap.LEFT_BUMPER);
 		openDrop.whenPressed(new OpenDrop());
 		openDrop.whenReleased(new CloseDrop());
+		
+		// Extends or Retracts the Gear Drop (First press will extend, from then on will alternate)
+		Button gearDropToggle = new JoystickButton(xboxController, RobotMap.RIGHT_STICK_BUTTON);
+		gearDropToggle.whenPressed(new GearDropToggle());
 	}  
 	
 	public double getUp() {

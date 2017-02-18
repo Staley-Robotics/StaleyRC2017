@@ -140,7 +140,6 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 
 		SmartDashboard.putData("Gyro", RobotMap.gyro);
-		SmartDashboard.putData("Reset Gyro", new GyroReset());
 	}
 
 	/**

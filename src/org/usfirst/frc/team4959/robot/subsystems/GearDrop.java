@@ -28,12 +28,12 @@ public class GearDrop extends Subsystem {
 
 	// Opens the Gear Drop
 	public void open() {
-		gearDrop.set(DoubleSolenoid.Value.kReverse);
+		gearDrop.set(DoubleSolenoid.Value.kForward);
 	}
 
 	// Closes the Gear Drop
 	public void close() {
-		gearDrop.set(DoubleSolenoid.Value.kForward);
+		gearDrop.set(DoubleSolenoid.Value.kReverse);
 	}
 
 	// Extends the Gear Drop outward
