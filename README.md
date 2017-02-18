@@ -16,7 +16,7 @@ X Button: Turn Shifter On
 
 Y Button: Intake (Takes balls into the bot)
 
-Back Button (<): Extend Gear Drop while held, when released retracts Gear Drop
+Back Button (<): 
 
 Start Button: 
 
@@ -26,7 +26,7 @@ Left Bumper: Hold button and it will release gear drop, release button to close 
 
 Left Joy Stick press: 
 
-Right Joy Stick press: 
+Right Joy Stick press: Toggles Gear Drop Extender (Extend/Retract)
 
 # Ports
 Look at "***** Motor/Speed Controller Ports *****" inside RobotMap.java
