@@ -1,12 +1,10 @@
 package org.usfirst.frc.team4959.robot.commands.AutoCommands;
 
 import org.usfirst.frc.team4959.robot.Robot;
-import org.usfirst.frc.team4959.robot.commands.Agrivator.RunAgrivator;
-import org.usfirst.frc.team4959.robot.commands.Shooter.RunShooter;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
-
+ 
 /**
  *	Runs the RunShooter and RunAgrivator for an amount of time
  */

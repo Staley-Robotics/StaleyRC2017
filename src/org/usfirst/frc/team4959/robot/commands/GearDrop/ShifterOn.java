@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * Shifts the gearbox into high
- */
+ */ 
 public class ShifterOn extends Command {
 
 	public ShifterOn() {
@@ -23,11 +23,12 @@ public class ShifterOn extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return false;
+		return true;
 	}
 
 	// Called once after isFinished returns true
 	protected void end() {
+		System.out.println("Shifter on end");
 	}
 
 	// Called when another command which requires one or more of the same

@@ -3,7 +3,7 @@ package org.usfirst.frc.team4959.robot.commands.GearDrop;
 import org.usfirst.frc.team4959.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
-
+ 
 /**
  * Opens the gear drop piston
  */
@@ -30,6 +30,7 @@ public class OpenDrop extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
+		System.out.println("Open Drop End");
 	}
 
 	// Called when another command which requires one or more of the same

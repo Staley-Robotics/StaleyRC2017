@@ -5,7 +5,7 @@ import org.usfirst.frc.team4959.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Command;
-
+ 
 /**
  * Runs the shooter motor
  */

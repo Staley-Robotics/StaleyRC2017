@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-
+ 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -27,7 +27,7 @@ public class OI {
 
 	public OI() {
 
-	// ***** X-Box Controller *****
+	// ***** XBox Controller *****
 		xboxController = new Joystick(RobotMap.XBOX_PORT);
 
 		
@@ -66,7 +66,7 @@ public class OI {
 		Button openDrop = new JoystickButton(xboxController, RobotMap.LEFT_BUMPER);
 		openDrop.whenPressed(new OpenDrop());
 		openDrop.whenReleased(new CloseDrop());
-	}
+	}  
 	
 	public double getUp() {
 		return xboxController.getPOV(1);

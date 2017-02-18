@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.PIDCommand;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 
-/**
+/** 
  *  negative angle is left, positive angle is right
  */
 public class GyroTurning extends Command {

@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 
-/**
+/** 
  * Drives straight for an amount of time using the gyro
  */
 public class GyroDrive extends Command {

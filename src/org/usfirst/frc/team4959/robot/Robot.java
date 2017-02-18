@@ -33,7 +33,7 @@ import org.usfirst.frc.team4959.robot.subsystems.Shooter;
  * documentation. If you change the name of this class or the package after
  * creating this project, you must also update the manifest file in the resource
  * directory.
- */
+ */ 
 public class Robot extends IterativeRobot {
 
 	// ***** Subsystems *****
@@ -62,7 +62,7 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		RobotMap.init();
 		oi = new OI();
-
+  
 		// SmartDashboard Autonomous Choices
 		auto = new SendableChooser<Command>();
 		auto.addDefault("Delay", new Delay(5));

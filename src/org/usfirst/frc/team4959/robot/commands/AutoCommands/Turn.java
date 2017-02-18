@@ -14,7 +14,7 @@ public class Turn extends Command {
 
 	private double turnSpeed;
 	public double time;
-	private Timer timer;
+	private Timer timer; 
 
 	protected RobotDrive drive = RobotMap.driveTrain;
 

@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * Resets the gyro
- */
+ */ 
 public class GyroReset extends Command {
 
 	public GyroReset() {

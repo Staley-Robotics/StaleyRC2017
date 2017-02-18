@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
- */
+ */ 
 public class EmptyRight extends CommandGroup {
 
 	// GyroDrive(Time, Speed)

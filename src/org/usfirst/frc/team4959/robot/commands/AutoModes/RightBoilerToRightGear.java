@@ -12,7 +12,7 @@ import org.usfirst.frc.team4959.robot.commands.Shooter.LoadAndShoot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-/**
+/** 
  *
  */
 public class RightBoilerToRightGear extends CommandGroup {

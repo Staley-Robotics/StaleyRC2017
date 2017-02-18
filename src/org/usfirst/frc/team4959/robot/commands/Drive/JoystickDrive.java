@@ -6,7 +6,7 @@ import org.usfirst.frc.team4959.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * Allows user to drive robot with xbox controller
+ * Allows user to drive robot  with xbox controller
  */
 public class JoystickDrive extends Command {
 

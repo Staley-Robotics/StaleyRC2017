@@ -5,7 +5,7 @@ import org.usfirst.frc.team4959.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * Closes the gear drop piston
+ * Closes the gear drop piston 
  */
 public class CloseDrop extends Command {
 
@@ -28,6 +28,7 @@ public class CloseDrop extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
+		System.out.println("Close Drop End");
 	}
 
 	// Called when another command which requires one or more of the same

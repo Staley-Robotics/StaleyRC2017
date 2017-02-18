@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 
-/**
+/** 
  * Controls basic drive functionality of the robot
  */
 public class DriveTrain extends Subsystem {

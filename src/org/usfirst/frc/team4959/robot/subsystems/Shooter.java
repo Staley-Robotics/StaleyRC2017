@@ -1,4 +1,4 @@
-package org.usfirst.frc.team4959.robot.subsystems;
+ package org.usfirst.frc.team4959.robot.subsystems;
 
 import org.usfirst.frc.team4959.robot.RobotMap;
 
@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  * Controls ball shooter on the robot
- */
+ */ 
 public class Shooter extends Subsystem {
 
 	SpeedController shooterMotor = RobotMap.shooterMotor;
