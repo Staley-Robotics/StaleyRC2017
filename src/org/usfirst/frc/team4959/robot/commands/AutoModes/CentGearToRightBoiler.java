@@ -9,6 +9,11 @@ import org.usfirst.frc.team4959.robot.commands.AutoCommands.DriveStraight;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.GyroDrive;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.GyroTurning;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.Turn;
+import org.usfirst.frc.team4959.robot.commands.GearDrop.CloseDrop;
+import org.usfirst.frc.team4959.robot.commands.GearDrop.ExtendDrop;
+import org.usfirst.frc.team4959.robot.commands.GearDrop.OpenDrop;
+import org.usfirst.frc.team4959.robot.commands.GearDrop.RetractDrop;
+import org.usfirst.frc.team4959.robot.commands.Shooter.LoadAndShoot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -25,16 +30,22 @@ public class CentGearToRightBoiler extends CommandGroup {
 	public CentGearToRightBoiler() {
 
 		// Drive to the airship
-		addSequential(new DriveStraight(1.2, 0.5));
+		addSequential(new DriveStraight(1.0, 0.5));
 		addSequential(new DriveStraight(0.9, 0.2));
 		addSequential(new GyroDrive(0.1, 0));
 
 		// Release Gear
+		addSequential(new ExtendDrop());
+		addSequential(new Delay(0.2));
+		addSequential(new OpenDrop());
+		addSequential(new Delay(0.2));
+		addSequential(new RetractDrop());
 
-		// Back up from the ariship
+		// Back up from the airship
 		// addSequential(new Delay(0.5));
 		// addSequential(new DriveStraight(1, -0.6));
 		addSequential(new DriveStraight(0.3, -0.5));
+		addParallel(new CloseDrop());
 		// addSequential(new GyroTurning(-0.1, 0.6));
 
 		// 90 degree turn towards boiler direction
@@ -53,8 +64,10 @@ public class CentGearToRightBoiler extends CommandGroup {
 		addSequential(new DriveStraight(0.1, 0));
 
 		// Shoot
+		addSequential(new LoadAndShoot());
 
 		// yolo it
+		addSequential(new Delay(3));
 
 		// skrt skrt
 		addSequential(new DriveStraight(0.5, -0.7));

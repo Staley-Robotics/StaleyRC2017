@@ -6,7 +6,10 @@ import org.usfirst.frc.team4959.robot.commands.GearDrop.CloseDrop;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.ExtendDrop;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.OpenDrop;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.RetractDrop;
+import org.usfirst.frc.team4959.robot.commands.GearDrop.ShifterOff;
+import org.usfirst.frc.team4959.robot.commands.GearDrop.ShifterOn;
 import org.usfirst.frc.team4959.robot.commands.Intake.RunIntake;
+import org.usfirst.frc.team4959.robot.commands.Shooter.LoadAndShoot;
 import org.usfirst.frc.team4959.robot.commands.Shooter.RunShooter;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -33,40 +36,46 @@ public class OI {
 
 	public OI() {
 
-		//    ***** X-Box Controller *****
+		// ***** X-Box Controller *****
 		xboxController = new Joystick(RobotMap.XBOX_PORT);
-		
-        //    ***** Joystick *****
-			joystick = new Joystick(RobotMap.JOYSTICK_PORT);
-			
-		//    ***** Bound Buttons *****
 
-		Button raiseClimb = new JoystickButton(xboxController, RobotMap.A_BUTTON);
-		raiseClimb.whileActive(new RunClimber(1));
 		
-		Button lowerClimb = new JoystickButton(xboxController, RobotMap.B_BUTTON);
-		lowerClimb.whileHeld(new RunClimber(-1));
+		// ***** Joystick *****
+		joystick = new Joystick(RobotMap.JOYSTICK_PORT);
+
 		
-		Button runShooter = new JoystickButton(xboxController, RobotMap.X_BUTTON);
-		runShooter.whileHeld(new RunShooter());
+		// ***** Bound Buttons *****
+		// Run Shooter
+		Button runShooter = new JoystickButton(xboxController, RobotMap.A_BUTTON);
+		runShooter.toggleWhenPressed(new LoadAndShoot());
 		
+		// Shift Off
+		Button shifterOff = new JoystickButton(xboxController, RobotMap.B_BUTTON);
+		shifterOff.whenReleased(new ShifterOff());
+
+		// Shifter On
+		Button shifterOn = new JoystickButton(xboxController, RobotMap.X_BUTTON);
+		shifterOn.whenReleased(new ShifterOn());
+
+		// Run Intake
 		Button runIntake = new JoystickButton(xboxController, RobotMap.Y_BUTTON);
 		runIntake.whileHeld(new RunIntake());
-		
-		Button runAgrivator = new JoystickButton(xboxController, RobotMap.BACK_BUTTON);
-		runAgrivator.whileActive(new RunAgrivator());
-		
-		Button openDrop = new JoystickButton(xboxController, RobotMap.RIGHT_BUMPER);
+
+		// Extend Drop
+		Button extendDrop = new JoystickButton(xboxController, RobotMap.BACK_BUTTON);
+		// Maybe switch back to whileHeld
+		extendDrop.whenPressed(new ExtendDrop());
+		extendDrop.whenReleased(new RetractDrop());
+
+		// Raise Climber
+		Button raiseClimb = new JoystickButton(xboxController, RobotMap.RIGHT_BUMPER);
+		raiseClimb.whileActive(new RunClimber(1));
+
+		// Open Drop
+		Button openDrop = new JoystickButton(xboxController, RobotMap.LEFT_BUMPER);
 		openDrop.whenPressed(new OpenDrop());
-		
-		Button closeDrop = new JoystickButton(xboxController, RobotMap.LEFT_BUMPER);
-		closeDrop.whenPressed(new CloseDrop());
-		
-		Button extendDrop = new JoystickButton(xboxController, RobotMap.LEFT_STICK_BUTTON);
-		extendDrop.whileHeld(new ExtendDrop());
-		
-		Button retractDrop = new JoystickButton(xboxController, RobotMap.RIGHT_STICK_BUTTON);
-		retractDrop.whenReleased(new RetractDrop());
+		openDrop.whenReleased(new CloseDrop());
+
 	}
 
 	public double getUp() {
@@ -89,23 +98,4 @@ public class OI {
 		return xboxController.getRawAxis(RobotMap.LEFT_X_AXIS);
 	}
 
-	// There are a few additional built in buttons you can use. Additionally,
-	// by subclassing Button you can create custom triggers and bind those to
-	// commands the same as any other Button.
-
-	//// TRIGGERING COMMANDS WITH BUTTONS
-	// Once you have a button, it's trivial to bind it to a button in one of
-	// three ways:
-
-	// Start the command when the button is pressed and let it run the command
-	// until it is finished as determined by it's isFinished method.
-	// button.whenPressed(new ExampleCommand());
-
-	// Run the command while the button is being held down and interrupt it once
-	// the button is released.
-	// button.whileHeld(new ExampleCommand());
-
-	// Start the command when the button is released and let it run the command
-	// until it is finished as determined by it's isFinished method.
-	// button.whenReleased(new ExampleCommand());
 }

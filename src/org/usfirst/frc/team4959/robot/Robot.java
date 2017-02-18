@@ -10,11 +10,15 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team4959.robot.commands.GyroReset;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.Delay;
+import org.usfirst.frc.team4959.robot.commands.AutoCommands.GyroReset;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.GyroTurning;
 import org.usfirst.frc.team4959.robot.commands.AutoModes.RightGearToBoiler;
 import org.usfirst.frc.team4959.robot.commands.AutoModes.CentGearToRightBoiler;
+import org.usfirst.frc.team4959.robot.commands.AutoModes.EmptyLeft;
+import org.usfirst.frc.team4959.robot.commands.AutoModes.EmptyRight;
+import org.usfirst.frc.team4959.robot.commands.AutoModes.LeftBoilerToLeftGear;
+import org.usfirst.frc.team4959.robot.commands.AutoModes.RightBoilerToRightGear;
 import org.usfirst.frc.team4959.robot.commands.Climber.RunClimber;
 import org.usfirst.frc.team4959.robot.subsystems.Agrivator;
 import org.usfirst.frc.team4959.robot.subsystems.Climber;
@@ -66,8 +70,12 @@ public class Robot extends IterativeRobot {
 
 		auto = new SendableChooser();
 		auto.addDefault("Delay", new Delay(5));
+		auto.addObject("Left Empty", new EmptyLeft());
+		auto.addObject("Right Empty", new EmptyRight());
 		auto.addObject("Center Gear to Boiler", new CentGearToRightBoiler());
 		auto.addObject("Right Gear to Boiler", new RightGearToBoiler());
+		auto.addObject("Right Boiler to Right Gear", new RightBoilerToRightGear());
+		auto.addObject("Left Boiler to Left Gear", new LeftBoilerToLeftGear());
 		SmartDashboard.putData("Autonomous Modes", auto);
 
 		// Grabs Camrea feed and sends it to Smartdashboard

@@ -8,21 +8,25 @@ Right/Left Trigger: Forward/Reverse
 
 Left Stick: Turning
 
-A Button: Run Climber (Raises bot)
+A Button: Shooter and Agrivator, Press once to turn on and Press again to turn off
 
-B BUtton: Reverse Climber (Lowers bot)
+B Button: Turn shifter off
 
-X Button: Shooter (Shoots balls)
+X Button: Turn Shifter On
 
 Y Button: Intake (Takes balls into the bot)
 
-Back Button (<): Loads balls for shooting
+Back Button (<): Extend Gear Drop while held, when released retracts Gear Drop
 
-Left Bumper: Close Gear Drop
+Start Button: 
 
-Right Bumper: Open Gear Drop
+Right Bumper: Run Climber (Raises bot)
 
-Left Joy Stick press: Extend Gear Drop while held, when released retracts Gear Drop
+Left Bumper: Hold button and it will release gear drop, release button to close gear drop
+
+Left Joy Stick press: 
+
+Right Joy Stick press: 
 
 # Ports
 Look at "***** Motor/Speed Controller Ports *****" inside RobotMap.java

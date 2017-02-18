@@ -4,6 +4,7 @@ import org.usfirst.frc.team4959.robot.commands.GearDrop.RunCompressor;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -16,7 +17,7 @@ public class GearDrop extends Subsystem {
 	
 	DoubleSolenoid openGear = new DoubleSolenoid(0, 1);
 	DoubleSolenoid outLeft = new DoubleSolenoid(2, 3);
-	DoubleSolenoid outRight = new DoubleSolenoid(4, 5);
+	Solenoid dropOut = new Solenoid(4);
 	Compressor compressor = new Compressor(0);
 
     public void initDefaultCommand() {
@@ -39,12 +40,18 @@ public class GearDrop extends Subsystem {
     
     public void extend() {
     	outLeft.set(DoubleSolenoid.Value.kReverse);
-    	outRight.set(DoubleSolenoid.Value.kReverse);
     }
     
     public void retract() {
     	outLeft.set(DoubleSolenoid.Value.kForward);
-    	outRight.set(DoubleSolenoid.Value.kForward);
+    }
+    
+    public void shifterOn() {
+    	dropOut.set(true);
+    }
+    
+    public void shifterOff() {
+    	dropOut.set(false);
     }
 }
 

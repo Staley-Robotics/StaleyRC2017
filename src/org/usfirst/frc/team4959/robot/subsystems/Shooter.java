@@ -15,6 +15,8 @@ public class Shooter extends Subsystem {
 	private boolean check;
 	private boolean test;
 	
+	public boolean isRunning = false;
+	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
     }
