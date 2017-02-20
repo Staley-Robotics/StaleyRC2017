@@ -54,9 +54,7 @@ public class RobotMap {
 	public static final int AGRIVATOR_MOTOR_PORT = 6;
 
 	public static final int CLIMBER_PORT = 7;
-
-	public static final int GYRO_PORT = 0;
-
+	
 	
 // ***** Speed Controllers *****
 	public static SpeedController flDriveMotor = new Talon(FRONT_LEFT_DRIVE_MOTOR_PORT);

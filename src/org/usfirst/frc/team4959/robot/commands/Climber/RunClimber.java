@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.command.Command;
  * Runs the motor that turns on the climber so the robot can climb the rope
  */
 public class RunClimber extends Command {
-	private int speed;
+	private double speed;
 
-	public RunClimber(int speed) {
+	public RunClimber(double speed) {
 		this.speed = speed;
 		requires(Robot.climber);
 	}
