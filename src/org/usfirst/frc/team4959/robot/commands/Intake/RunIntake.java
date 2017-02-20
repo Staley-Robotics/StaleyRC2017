@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class RunIntake extends Command {
 	
-	private final double SPEED = -0.4;
+	private final double SPEED = -0.6;
 
     public RunIntake() {
     	requires(Robot.intake);
