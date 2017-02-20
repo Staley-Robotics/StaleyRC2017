@@ -8,7 +8,6 @@ import org.usfirst.frc.team4959.robot.commands.GearDrop.CloseDrop;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.ExtendDrop;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.OpenDrop;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.RetractDrop;
-import org.usfirst.frc.team4959.robot.commands.Shooter.LoadAndShoot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 

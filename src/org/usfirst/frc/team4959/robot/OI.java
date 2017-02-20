@@ -2,17 +2,14 @@ package org.usfirst.frc.team4959.robot;
 
 import org.usfirst.frc.team4959.robot.commands.Climber.RunClimber;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.CloseDrop;
-import org.usfirst.frc.team4959.robot.commands.GearDrop.ExtendDrop;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.GearDropToggle;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.OpenDrop;
-import org.usfirst.frc.team4959.robot.commands.GearDrop.RetractDrop;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.ShifterOff;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.ShifterOn;
 import org.usfirst.frc.team4959.robot.commands.Intake.RunIntake;
 import org.usfirst.frc.team4959.robot.commands.Shooter.LoadAndShoot;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
  
@@ -22,7 +19,6 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class OI {
 	
-	public static XboxController xcController;
 	public static Joystick xboxController;
 	public static Joystick joystick;
 

@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * Activates agrivator which prepares balls to be shot by the shooter.
- */
+ */  
 public class RunAgrivator extends Command {
 
 	private final double SPEED = -1;
