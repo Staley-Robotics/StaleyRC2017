@@ -11,7 +11,7 @@ public class RunClimber extends Command {
 	private double speed;
 
 	public RunClimber(double speed) {
-		this.speed = speed;
+		this.speed = speed; 
 		requires(Robot.climber);
 	}
 

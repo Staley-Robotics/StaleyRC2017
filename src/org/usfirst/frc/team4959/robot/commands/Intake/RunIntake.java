@@ -11,7 +11,7 @@ public class RunIntake extends Command {
 	
 	private final double SPEED = -0.6;
 
-    public RunIntake() {
+    public RunIntake() { 
     	requires(Robot.intake);
     }
 

@@ -11,7 +11,7 @@ public class RunAgrivator extends Command {
 
 	private final double SPEED = -1;
 
-	public RunAgrivator() {
+	public RunAgrivator() { 
 		requires(Robot.agrivator);
 	}
 
