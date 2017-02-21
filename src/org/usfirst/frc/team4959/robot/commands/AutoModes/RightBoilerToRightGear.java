@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4959.robot.commands.AutoModes;
 
+import org.usfirst.frc.team4959.robot.Robot;
+import org.usfirst.frc.team4959.robot.commands.GetVisionAngle;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.AutoLoadAndShoot;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.DriveStraight;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.GyroDrive;
@@ -32,12 +34,15 @@ public class RightBoilerToRightGear extends CommandGroup {
 
 		// Turn around just under 180
 		addSequential(new GyroTurning(-160, 0.6));
+		
+		// Track Tape Near Gear Drop Location
+		addSequential(new GetVisionAngle());
+		
+		addSequential(new GyroTurning(-Robot.driveTrain.gyroStore, 0.6));
 
 		// Drive Straight in the direction of the right gear
 		addSequential(new DriveStraight(0.6, 0.7));
-
-		// Track Tape Near Gear Drop Location
-
+		
 		// Load Gear
 		addSequential(new ExtendDrop());
 		addSequential(new OpenDrop());

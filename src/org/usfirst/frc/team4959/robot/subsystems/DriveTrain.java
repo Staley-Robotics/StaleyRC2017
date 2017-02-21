@@ -13,6 +13,8 @@ import edu.wpi.first.wpilibj.interfaces.Gyro;
  */
 public class DriveTrain extends Subsystem {
 	
+	public double gyroStore = 0.0;
+	
 	RobotDrive drive = RobotMap.driveTrain;
 
 	public void initDefaultCommand() {

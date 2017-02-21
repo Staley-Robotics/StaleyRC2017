@@ -7,11 +7,13 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.Delay;
 import org.usfirst.frc.team4959.robot.commands.AutoModes.RightGearToBoiler;
+import org.usfirst.frc.team4959.robot.commands.AutoModes.AutoBrettv3;
 import org.usfirst.frc.team4959.robot.commands.AutoModes.CentGearToRightBoiler;
 import org.usfirst.frc.team4959.robot.commands.AutoModes.EmptyLeft;
 import org.usfirst.frc.team4959.robot.commands.AutoModes.EmptyRight;
@@ -50,7 +52,7 @@ public class Robot extends IterativeRobot {
 	protected org.usfirst.frc.team4959.robot.commands.Drive.JoystickDrive JoystickDrive;
 	protected RunClimber startClimber;
 	
-	
+	public static NetworkTable table;
 	Command autonomousCommand;
 
 	SendableChooser<Command> auto = new SendableChooser<>();
@@ -61,12 +63,14 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
+		table = table.getTable("LiftTracker");
 		RobotMap.init();
 		oi = new OI();
   
 		// SmartDashboard Autonomous Choices
 		auto = new SendableChooser<Command>();
 		auto.addDefault("Delay", new Delay(5));
+		auto.addDefault("Auto Brett", new AutoBrettv3());
 		auto.addObject("Left Empty", new EmptyLeft());
 		auto.addObject("Right Empty", new EmptyRight());
 		auto.addObject("Center Gear to Boiler", new CentGearToRightBoiler());
@@ -78,9 +82,9 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Autonomous Modes", auto);
 
 		// Grabs Camrea feed and sends it to Smartdashboard
-//		 UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-//		 camera.setResolution(320, 240);
-//		 CameraServer.getInstance().removeServer("cam0");
+		 UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+		 camera.setResolution(320, 240);
+		 CameraServer.getInstance().removeServer("cam0");
 	}
 
 	/**

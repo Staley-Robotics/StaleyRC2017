@@ -30,3 +30,18 @@ Right Joy Stick press: Toggles Gear Drop Extender (Extend/Retract)
 
 # Ports
 Look at "***** Motor/Speed Controller Ports *****" inside RobotMap.java
+Front (LEFT) Motor: 4
+
+Front(RIGHT) Motor: 0
+
+Back (LEFT) Motor: 5
+
+Back (RIGHT) Motor: 1
+
+Shooter: 3
+
+In-take: 2
+
+Agrivator: 6
+
+Climber: 7

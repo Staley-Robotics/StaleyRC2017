@@ -25,7 +25,7 @@ public class EmptyRight extends CommandGroup {
 		addSequential(new GyroDrive(1.6, 0.5));
 
 		// Turn to gear
-		addSequential(new GyroTurning(-15, 6));
+		addSequential(new GyroTurning(-15, 0.6));
 
 		// Drive to gear
 		addSequential(new DriveStraight(0.6, 0.4));

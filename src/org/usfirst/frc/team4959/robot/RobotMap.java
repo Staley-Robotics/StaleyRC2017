@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.XboxController;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -41,7 +42,6 @@ public class RobotMap {
 	public static final int Y_BUTTON = 4;
 
 	public static final int JOYSTICK_Y = 1;
- 
 	
 // ***** Motor/Speed Controller Ports *****
 	public static final int FRONT_LEFT_DRIVE_MOTOR_PORT = 4;
