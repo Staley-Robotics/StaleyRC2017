@@ -12,8 +12,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class GearDrop extends Subsystem {
 
-	DoubleSolenoid gearDrop = new DoubleSolenoid(0, 1);
-	DoubleSolenoid gearDropExtender = new DoubleSolenoid(2, 3);
+	DoubleSolenoid gearDrop = new DoubleSolenoid(2, 3);
+	DoubleSolenoid gearDropExtender = new DoubleSolenoid(0, 1);
 	Solenoid shifter = new Solenoid(4);
 	Compressor compressor = new Compressor(0);
 

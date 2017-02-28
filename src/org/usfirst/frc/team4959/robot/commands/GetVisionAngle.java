@@ -16,8 +16,9 @@ public class GetVisionAngle extends Command {
     }
 
     // Called just before this Command runs the first time
-    protected void initialize() {
-    	Robot.driveTrain.gyroStore = Robot.table.getDouble("angleToTarget");
+    @SuppressWarnings("deprecation")
+	protected void initialize() {
+//    	Robot.driveTrain.gyroStore = Robot.table.getDouble("angleToTarget");
     }
 
     // Called repeatedly when this Command is scheduled to run

@@ -1,10 +1,8 @@
 package org.usfirst.frc.team4959.robot.commands.AutoCommands;
 
 import org.usfirst.frc.team4959.robot.Robot;
-import org.usfirst.frc.team4959.robot.RobotMap;
 import org.usfirst.frc.team4959.robot.subsystems.DriveTrain;
 
-import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
  
@@ -43,6 +41,7 @@ public class DriveStraight extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
+		drive.stop();
 		timer.stop();
 		timer.reset();
 	}
@@ -50,5 +49,6 @@ public class DriveStraight extends Command {
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
+		drive.stop();
 	}
 }

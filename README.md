@@ -1,8 +1,8 @@
 # StaleyRC2017
-Staley Robot Code for 2017 SteamWorks
+[Staley Robotic's](http://www.staleyrobotics.com/ "Staley Robtoic's Home Page") Code for FRC 2017 SteamWorks
 
 # Controls
-X-Box:
+**X-Box:**
 
 Right/Left Trigger: Forward/Reverse
 
@@ -20,28 +20,27 @@ Back Button (<):
 
 Start Button: 
 
-Right Bumper: Run Climber (Raises bot)
+Right Bumper: Drop Gear (while held) / Close
 
-Left Bumper: Hold button and it will release gear drop, release button to close gear drop
+Left Bumper: Extend Gear Drop Toggle.
 
 Left Joy Stick press: 
 
-Right Joy Stick press: Toggles Gear Drop Extender (Extend/Retract)
+Right Joy Stick press: Climber
 
 # Ports
-Look at "***** Motor/Speed Controller Ports *****" inside RobotMap.java
-Front (LEFT) Motor: 4
+Front Left Motor: 4
 
-Front(RIGHT) Motor: 0
+Front Right Motor: 0
 
-Back (LEFT) Motor: 5
+Back Left Motor: 5
 
-Back (RIGHT) Motor: 1
+Back Right Motor: 1
 
-Shooter: 3
+Shooter Motor: 6
 
-In-take: 2
+In-take Motor: 2
 
-Agrivator: 6
+Agrivator Motor: 3
 
-Climber: 7
+Climber Motor: 7

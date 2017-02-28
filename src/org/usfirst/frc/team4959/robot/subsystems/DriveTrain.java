@@ -3,10 +3,8 @@ package org.usfirst.frc.team4959.robot.subsystems;
 import org.usfirst.frc.team4959.robot.RobotMap;
 import org.usfirst.frc.team4959.robot.commands.Drive.JoystickDrive;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.interfaces.Gyro;
 
 /** 
  * Controls basic drive functionality of the robot
@@ -30,8 +28,8 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public void worldOfTanksDrive(double backward, double forward, double rotate) {
-		double speedModifier = 0.7;
-		double turnSpeedModifier = 0.7;
+		double speedModifier = 1;
+		double turnSpeedModifier = 1;
 		
 		if (backward * speedModifier > 0) {
 			drive.arcadeDrive(-backward * speedModifier, rotate * turnSpeedModifier);

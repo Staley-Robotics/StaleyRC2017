@@ -26,7 +26,6 @@ import org.usfirst.frc.team4959.robot.subsystems.Agrivator;
 import org.usfirst.frc.team4959.robot.subsystems.Climber;
 import org.usfirst.frc.team4959.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4959.robot.subsystems.GearDrop;
-import org.usfirst.frc.team4959.robot.subsystems.GripPipeline;
 import org.usfirst.frc.team4959.robot.subsystems.Intake;
 import org.usfirst.frc.team4959.robot.subsystems.Shooter;
 
@@ -40,7 +39,6 @@ import org.usfirst.frc.team4959.robot.subsystems.Shooter;
 public class Robot extends IterativeRobot {
 
 	// ***** Subsystems *****
-	public static final GripPipeline gripVision = new GripPipeline();
 	public static final GearDrop gearDrop = new GearDrop();
 	public static final Agrivator agrivator = new Agrivator();
 	public static final Intake intake = new Intake();
@@ -63,7 +61,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
-		table = table.getTable("LiftTracker");
+//		table = NetworkTable.getTable("LiftTracker");
 		RobotMap.init();
 		oi = new OI();
   
@@ -84,7 +82,7 @@ public class Robot extends IterativeRobot {
 		// Grabs Camrea feed and sends it to Smartdashboard
 		 UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
 		 camera.setResolution(320, 240);
-		 CameraServer.getInstance().removeServer("cam0");
+//		 CameraServer.getInstance().removeServer("cam0");
 	}
 
 	/**

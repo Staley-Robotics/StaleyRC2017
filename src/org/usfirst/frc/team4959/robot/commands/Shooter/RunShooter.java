@@ -2,16 +2,14 @@
 package org.usfirst.frc.team4959.robot.commands.Shooter;
 
 import org.usfirst.frc.team4959.robot.Robot;
-import org.usfirst.frc.team4959.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Command;
  
 /**
  * Runs the shooter motor
  */
 public class RunShooter extends Command {
-	private final double SPEED = -0.88;
+	private final double SPEED = -0.9;
 
 	public RunShooter() {
 		requires(Robot.shooter);

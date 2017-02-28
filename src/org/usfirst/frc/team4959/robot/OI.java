@@ -50,16 +50,16 @@ public class OI {
 		runIntake.whileHeld(new RunIntake());
 
 		// Raise Climber
-		Button raiseClimb = new JoystickButton(xboxController, RobotMap.RIGHT_BUMPER);
+		Button raiseClimb = new JoystickButton(xboxController, RobotMap.RIGHT_STICK_BUTTON);
 		raiseClimb.whileActive(new RunClimber(1));
 
 		// Open Drop
-		Button openDrop = new JoystickButton(xboxController, RobotMap.LEFT_BUMPER);
+		Button openDrop = new JoystickButton(xboxController, RobotMap.RIGHT_BUMPER);
 		openDrop.whenPressed(new OpenDrop());
 		openDrop.whenReleased(new CloseDrop());
 		
 		// Extends or Retracts the Gear Drop (First press will extend, from then on will alternate)
-		Button gearDropToggle = new JoystickButton(xboxController, RobotMap.RIGHT_STICK_BUTTON);
+		Button gearDropToggle = new JoystickButton(xboxController, RobotMap.LEFT_BUMPER);
 		gearDropToggle.whenPressed(new GearDropToggle());
 	}  
 	
@@ -85,6 +85,4 @@ public class OI {
 	public double getLeftStickX() {
 		return xboxController.getRawAxis(RobotMap.LEFT_X_AXIS);
 	}
-
-
 }

@@ -5,7 +5,6 @@ import org.usfirst.frc.team4959.robot.RobotMap;
 import org.usfirst.frc.team4959.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.PIDCommand;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 
 /** 
@@ -27,7 +26,7 @@ public class GyroTurning extends Command {
 	public GyroTurning(double angle, double speed) {
 		this.speed = speed;
 		this.toAngle = angle;
-		this.toAnglePass = angle;
+		GyroTurning.toAnglePass = angle;
 		requires(Robot.driveTrain);
 	}
 	
