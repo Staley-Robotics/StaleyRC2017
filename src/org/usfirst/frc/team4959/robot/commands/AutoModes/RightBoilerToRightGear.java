@@ -2,7 +2,6 @@ package org.usfirst.frc.team4959.robot.commands.AutoModes;
 
 import org.usfirst.frc.team4959.robot.Robot;
 import org.usfirst.frc.team4959.robot.commands.GetVisionAngle;
-import org.usfirst.frc.team4959.robot.commands.LoadAndShoot;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.AutoLoadAndShoot;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.DriveStraight;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.GyroDrive;

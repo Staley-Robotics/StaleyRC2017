@@ -1,6 +1,5 @@
 package org.usfirst.frc.team4959.robot.commands.AutoModes;
 
-import org.usfirst.frc.team4959.robot.commands.LoadAndShoot;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.AutoLoadAndShoot;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.Delay;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.DriveStraight;
@@ -76,6 +75,6 @@ public class RightDumpToRightBoiler extends CommandGroup {
 //		addSequential(new GyroDrive(1.0, 0.6));
 
 		// Shoot
-		 addSequential(new LoadAndShoot());
+		 addSequential(new AutoLoadAndShoot());
 	}
 }
