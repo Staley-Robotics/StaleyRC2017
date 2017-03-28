@@ -1,8 +1,10 @@
 package org.usfirst.frc.team4959.robot.commands.AutoModes;
 
+import org.usfirst.frc.team4959.robot.commands.AutoCommands.Delay;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.DriveStraight;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.GyroDrive;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.GyroTurning;
+import org.usfirst.frc.team4959.robot.commands.AutoCommands.TurnToVision;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.CloseDrop;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.ExtendDrop;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.OpenDrop;
@@ -21,26 +23,18 @@ public class EmptyLeft extends CommandGroup {
 
 	public EmptyLeft() {
 
-		// Drive Forward
-		addSequential(new GyroDrive(1.6, 0.5));
+		addSequential(new GyroDrive(1.53, 0.8));
+		addSequential(new GyroTurning(-55, 0.6));
+		addSequential(new TurnToVision());
+		addSequential(new GyroDrive(1.15, 0.8));
+		addSequential(new Delay(0.5));
 
-		// Turn to gear
-		addSequential(new GyroTurning(15, 6));
-
-		// Drive to gear
-		addSequential(new DriveStraight(0.6, 0.4));
-
-		// Drop Gear
 		addSequential(new ExtendDrop());
+		addSequential(new Delay(0.75));
 		addSequential(new OpenDrop());
-		addSequential(new RetractDrop());
-
-		// Back up
-		addSequential(new GyroDrive(0.2, -0.7));
-		addParallel(new GyroTurning(75, 0.6));
-		addSequential(new GyroDrive(0.5, -0.5));
-		addParallel(new CloseDrop());
-		addSequential(new GyroTurning(10, 0.1));
-		addSequential(new GyroDrive(0.8, -0.6));
+		addSequential(new Delay(1.0));
+		addSequential(new DriveStraight(2.5, -0.5));
+		
+		addSequential(new CloseDrop());
 	}
 }

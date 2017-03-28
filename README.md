@@ -2,31 +2,23 @@
 [Staley Robotic's](http://www.staleyrobotics.com/ "Staley Robtoic's Home Page") Code for FRC 2017 SteamWorks
 
 # Controls
-**X-Box:**
+**X-Box (Red Stripe):**
 
 Right/Left Trigger: Forward/Reverse
 
 Left Stick: Turning
 
-A Button: Shooter and Agrivator, Press once to turn on and Press again to turn off
+B Button: Shifter (Toggle)
 
-B Button: Turn shifter off
+**X-Box Two (Reg.):**
 
-X Button: Turn Shifter On
+A Button: Shooter System (Toggle)
 
-Y Button: Intake (Takes balls into the bot)
+B Button: Run Climber (while held)
 
-Back Button (<): 
+Right Bumper: Open Gear Drop (while held)
 
-Start Button: 
-
-Right Bumper: Drop Gear (while held) / Close
-
-Left Bumper: Extend Gear Drop Toggle.
-
-Left Joy Stick press: 
-
-Right Joy Stick press: Climber
+Left Bumper: Extend Gear Drop (Toggle)
 
 # Ports
 Front Left Motor: 4

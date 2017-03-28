@@ -30,7 +30,7 @@ public class OpenDrop extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
-		System.out.println("Open Drop End");
+		System.out.println("Gear Drop: Open Drop End");
 	}
 
 	// Called when another command which requires one or more of the same

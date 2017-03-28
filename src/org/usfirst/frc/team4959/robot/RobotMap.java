@@ -15,7 +15,8 @@ public class RobotMap {
 
 // ***** HID Controllers *****
 	public static final int XBOX_PORT = 0;
-	public static final int JOYSTICK_PORT = 1;
+	public static final int XBOX_TWO_PORT = 1;
+//	public static final int JOYSTICK_PORT = 1;
 
 // ***** HID Controller Buttons/Joysticks *****
 	public static final int LEFT_X_AXIS = 0;
@@ -47,9 +48,9 @@ public class RobotMap {
 	public static final int FRONT_RIGHT_DRIVE_MOTOR_PORT = 0;
 	public static final int BACK_RIGHT_DRIVE_MOTOR_PORT = 1;
    
-	public static final int SHOOTER_MOTOR_PORT = 6;
+	public static final int SHOOTER_MOTOR_PORT = 3;
 	public static final int INTAKE_MOTOR_PORT = 2;
-	public static final int AGRIVATOR_MOTOR_PORT = 3;
+	public static final int AGRIVATOR_MOTOR_PORT = 6;
 
 	public static final int CLIMBER_PORT = 7;
 	

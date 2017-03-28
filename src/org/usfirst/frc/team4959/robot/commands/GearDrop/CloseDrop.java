@@ -28,7 +28,7 @@ public class CloseDrop extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
-		System.out.println("Close Drop End");
+		System.out.println("Gear Drop: Close Drop End");
 	}
 
 	// Called when another command which requires one or more of the same

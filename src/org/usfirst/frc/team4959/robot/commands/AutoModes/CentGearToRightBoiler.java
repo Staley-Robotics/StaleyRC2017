@@ -42,29 +42,29 @@ public class CentGearToRightBoiler extends CommandGroup {
 		addParallel(new CloseDrop());
 		// addSequential(new GyroTurning(-0.1, 0.6));
 
-		// 90 degree turn towards boiler direction
-		// addSequential(new Delay(.3));
-		addSequential(new GyroTurning(75, -0.6));
-
-		// Drive towards boiler direction
-		addSequential(new DriveStraight(2, 0.6));
-
-		// Turn directly towards boiler
-		addSequential(new GyroTurning(15, 0.6));
-
-		// Drive to boiler wall
-		addSequential(new DriveStraight(1, 0.7));
-		addSequential(new DriveStraight(1.3, 0.4));
-		addSequential(new DriveStraight(0.1, 0));
-
-		// Shoot
-		addSequential(new AutoLoadAndShoot());
-
-		// yolo it
-
-		// skrt skrt
-		addSequential(new DriveStraight(0.5, -0.7));
-		addSequential(new GyroTurning(24, 0.6));
-		addSequential(new DriveStraight(0.3, -1.0));
+//		// 90 degree turn towards boiler direction
+//		// addSequential(new Delay(.3));
+//		addSequential(new GyroTurning(75, -0.6));
+//
+//		// Drive towards boiler direction
+//		addSequential(new DriveStraight(2, 0.6));
+//
+//		// Turn directly towards boiler
+//		addSequential(new GyroTurning(15, 0.6));
+//
+//		// Drive to boiler wall
+//		addSequential(new DriveStraight(1, 0.7));
+//		addSequential(new DriveStraight(1.3, 0.4));
+//		addSequential(new DriveStraight(0.1, 0));
+//
+//		// Shoot
+//		addSequential(new AutoLoadAndShoot());
+//
+//		// yolo it
+//
+//		// skrt skrt
+//		addSequential(new DriveStraight(0.5, -0.7));
+//		addSequential(new GyroTurning(24, 0.6));
+//		addSequential(new DriveStraight(0.3, -1.0));
 	}
 }

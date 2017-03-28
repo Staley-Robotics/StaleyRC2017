@@ -4,6 +4,7 @@ package org.usfirst.frc.team4959.robot;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -14,9 +15,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.Delay;
 import org.usfirst.frc.team4959.robot.commands.AutoModes.RightGearToBoiler;
 import org.usfirst.frc.team4959.robot.commands.AutoModes.AutoBrettv3;
+import org.usfirst.frc.team4959.robot.commands.AutoModes.CentGearToLeftBoiler;
 import org.usfirst.frc.team4959.robot.commands.AutoModes.CentGearToRightBoiler;
 import org.usfirst.frc.team4959.robot.commands.AutoModes.EmptyLeft;
-import org.usfirst.frc.team4959.robot.commands.AutoModes.EmptyRight;
+import org.usfirst.frc.team4959.robot.commands.AutoModes.RightGear;
 import org.usfirst.frc.team4959.robot.commands.AutoModes.LeftBoilerToLeftGear;
 import org.usfirst.frc.team4959.robot.commands.AutoModes.LeftDumpToLeftBoiler;
 import org.usfirst.frc.team4959.robot.commands.AutoModes.RightBoilerToRightGear;
@@ -45,6 +47,7 @@ public class Robot extends IterativeRobot {
 	public static final Climber climber = new Climber();
 	public static final Shooter shooter = new Shooter();
 	public static final DriveTrain driveTrain = new DriveTrain();
+//	public static final PowerDistributionPanel pdp = new PowerDistributionPanel();
 
 	public static OI oi;
 	protected org.usfirst.frc.team4959.robot.commands.Drive.JoystickDrive JoystickDrive;
@@ -52,7 +55,7 @@ public class Robot extends IterativeRobot {
 	
 	public static NetworkTable table;
 	Command autonomousCommand;
-
+	
 	SendableChooser<Command> auto = new SendableChooser<>();
 
 	/**
@@ -61,28 +64,33 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
-//		table = NetworkTable.getTable("LiftTracker");
+		table = NetworkTable.getTable("LiftTracker");
+		table.putDouble("ayylmao", 420);
 		RobotMap.init();
 		oi = new OI();
   
 		// SmartDashboard Autonomous Choices
 		auto = new SendableChooser<Command>();
 		auto.addDefault("Delay", new Delay(5));
-		auto.addDefault("Auto Brett", new AutoBrettv3());
-		auto.addObject("Left Empty", new EmptyLeft());
-		auto.addObject("Right Empty", new EmptyRight());
-		auto.addObject("Center Gear to Boiler", new CentGearToRightBoiler());
-		auto.addObject("Right Gear to Boiler", new RightGearToBoiler());
-		auto.addObject("Right Boiler to Right Gear", new RightBoilerToRightGear());
-		auto.addObject("Left Boiler to Left Gear", new LeftBoilerToLeftGear());
-		auto.addObject("Right Dump To Right Boiler", new RightDumpToRightBoiler());
-		auto.addObject("Left Dump To Left Boiler", new LeftDumpToLeftBoiler());
+		auto.addObject("Center Gear Drop", new AutoBrettv3());
+		auto.addObject("Left Gear", new EmptyLeft());
+		auto.addObject("Right Gear", new RightGear());
+//		auto.addObject("Center Gear (RUN THIS)//to Right Boiler", new CentGearToRightBoiler());
+//		auto.addObject("Center Gear to Left Boiler", new CentGearToLeftBoiler());
+//		auto.addObject("Right Gear to Boiler", new RightGearToBoiler());
+//		auto.addObject("Right Boiler to Right Gear", new RightBoilerToRightGear());
+//		auto.addObject("Left Boiler to Left Gear", new LeftBoilerToLeftGear());
+//		auto.addObject("Right Dump To Right Boiler", new RightDumpToRightBoiler());
+//		auto.addObject("Left Dump To Left Boiler", new LeftDumpToLeftBoiler());
 		SmartDashboard.putData("Autonomous Modes", auto);
 
 		// Grabs Camrea feed and sends it to Smartdashboard
 		 UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-		 camera.setResolution(320, 240);
+		 camera.setResolution(640, 480);
+		 camera.setExposureManual(-2);
+		 camera.setFPS(30);
 //		 CameraServer.getInstance().removeServer("cam0");
+		 Robot.gearDrop.shifterOff();
 	}
 
 	/**
@@ -112,6 +120,8 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
+		Robot.gearDrop.retract();
+		Robot.gearDrop.shifterOff();
 		autonomousCommand = auto.getSelected();
 
 		// schedule the autonomous command (example)
@@ -129,6 +139,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
+		Robot.gearDrop.retract();
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
@@ -143,7 +154,6 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-
 		SmartDashboard.putData("Gyro", RobotMap.gyro);
 	}
 

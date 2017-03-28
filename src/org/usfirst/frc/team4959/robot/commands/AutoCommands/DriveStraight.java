@@ -31,7 +31,8 @@ public class DriveStraight extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		drive.tankDrive(speed * speedModifier, speed);
+		//speedModifier is used to prevent veering. 
+		drive.tankDrive(-speed, -speed*speedModifier);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

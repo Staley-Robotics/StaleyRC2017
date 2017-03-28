@@ -5,6 +5,7 @@ import org.usfirst.frc.team4959.robot.commands.AutoCommands.Delay;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.DriveStraight;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.GyroDrive;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.GyroTurning;
+import org.usfirst.frc.team4959.robot.commands.GearDrop.ShifterOn;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -14,26 +15,43 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class LeftDumpToLeftBoiler extends CommandGroup {
 
 	public LeftDumpToLeftBoiler() {
-		// Parallel GyroDrive and GyroTurning into the Dump Location
-		addParallel(new DriveStraight(0.78, -0.8));
-		addSequential(new GyroTurning(-40, 0.5));
-		addSequential(new DriveStraight(0.5, -0.6));
-		addSequential(new GyroTurning(-30, 0.5));
-		addSequential(new DriveStraight(0.7, -0.5));
+		// Turn Shifter On
+				addSequential(new ShifterOn());
+				addSequential(new DriveStraight(0.1, -0.1));
 
-		// Dump
-		addSequential(new Delay(2.5));
+				// *Get to Dump Location*
+				// Back Up
+				addParallel(new DriveStraight(0.82, 0.7));
+				// Turn Slightly Towards Dump
+				addSequential(new GyroTurning(33, 0.6));
+				// Back up more
+				addSequential(new DriveStraight(0.6, 0.55));
+				// Turn to where back is facing Dump
+				addSequential(new GyroTurning(40, 0.6));
+				// Back into the Dump
+				addSequential(new DriveStraight(0.4, 0.7));
+				addSequential(new DriveStraight(0.2, 0.4));
 
-		// Parallel GyroDrive and GyroTurning to back up and line up with Boiler
-		addSequential(new DriveStraight(0.6, 0.5));
-		addSequential(new GyroTurning(15, 0.5));
-		addSequential(new DriveStraight(0.8, 0.6));
-		addSequential(new GyroTurning(115, 0.5));
+				// Dump
+				addSequential(new Delay(2.75));
 
-		// Drive to Boiler
-		addSequential(new GyroDrive(1.0, 0.6));
+				// *Back away from Dump and Line Up With Boiler*
+				// Back Up
+				addSequential(new DriveStraight(0.5, -0.5));
+				// Turn slightly
+				addSequential(new GyroTurning(-15, 0.6));
+				// Back Up More
+				addSequential(new DriveStraight(1.0, -0.65));
+				// Turn to line up with Boiler
+				addSequential(new GyroTurning(-91, 0.6));
 
-		// Shoot
-		 addSequential(new AutoLoadAndShoot());
+				// Drive to Boiler
+				addSequential(new DriveStraight(0.65, -0.7));
+				addSequential(new DriveStraight(0.1, 0));
+				addSequential(new DriveStraight(0.15, -0.2));
+				addSequential(new DriveStraight(0.5, 0));
+
+				// Shoot
+				addSequential(new AutoLoadAndShoot());
 	}
 }
