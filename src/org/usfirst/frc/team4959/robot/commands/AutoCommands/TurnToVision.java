@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Uses vision to line up with the target
  */
 public class TurnToVision extends Command {
 	Timer timer = new Timer();
@@ -14,48 +14,49 @@ public class TurnToVision extends Command {
 	double currentAngle;
 	boolean isGucci = false;
 	double threshold = 1.5;
-    public TurnToVision() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    }
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    	System.out.println("we going baby, turning to vision");
-    	
-    }
+	public TurnToVision() {
+		// Use requires() here to declare subsystem dependencies
+		// eg. requires(chassis);
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    @SuppressWarnings("deprecation")
+	// Called just before this Command runs the first time
+	protected void initialize() {
+		System.out.println("we going baby, turning to vision");
+
+	}
+
+	// Called repeatedly when this Command is scheduled to run
+	@SuppressWarnings("deprecation")
 	protected void execute() {
-    	currentAngle = Robot.table.getDouble("angleFromGoal");
-    	if(currentAngle > 2){
-    		double pOut = currentAngle * kP;
-    		System.out.println(pOut);
-    		Robot.driveTrain.tankDrive(-.4, .4);
-    		System.out.println("we are setting left motor power");
-    		
-    	} else if(currentAngle < -2){
-    		double pOut = currentAngle * kP;
-    		System.out.println(pOut);
-    		Robot.driveTrain.tankDrive(.4, -.4);
-    		System.out.println("we are setting right motor power");
-    		
-    	}
-    }
+		currentAngle = Robot.table.getDouble("angleFromGoal");
+		if (currentAngle > 2) {
+			double pOut = currentAngle * kP;
+			System.out.println(pOut);
+			Robot.driveTrain.tankDrive(-.4, .4);
+			System.out.println("we are setting left motor power");
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return Math.abs(currentAngle) < 2;
-    }
+		} else if (currentAngle < -2) {
+			double pOut = currentAngle * kP;
+			System.out.println(pOut);
+			Robot.driveTrain.tankDrive(.4, -.4);
+			System.out.println("we are setting right motor power");
 
-    // Called once after isFinished returns true
-    protected void end() {
-    	Robot.driveTrain.arcadeDrive(0, 0);
-    }
+		}
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    }
+	// Make this return true when this Command no longer needs to run execute()
+	protected boolean isFinished() {
+		return Math.abs(currentAngle) < 2;
+	}
+
+	// Called once after isFinished returns true
+	protected void end() {
+		Robot.driveTrain.arcadeDrive(0, 0);
+	}
+
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	protected void interrupted() {
+	}
 }

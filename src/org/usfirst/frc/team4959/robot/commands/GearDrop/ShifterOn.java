@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * Shifts the gearbox into high
- */ 
+ */
 public class ShifterOn extends Command {
 
 	public ShifterOn() {

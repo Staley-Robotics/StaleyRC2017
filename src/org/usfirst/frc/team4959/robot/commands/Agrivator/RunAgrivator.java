@@ -1,17 +1,17 @@
 package org.usfirst.frc.team4959.robot.commands.Agrivator;
- 
+
 import org.usfirst.frc.team4959.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * Activates agrivator which prepares balls to be shot by the shooter.
- */  
+ */
 public class RunAgrivator extends Command {
 
 	private final double SPEED = -0.16;
 
-	public RunAgrivator() { 
+	public RunAgrivator() {
 		requires(Robot.agrivator);
 	}
 

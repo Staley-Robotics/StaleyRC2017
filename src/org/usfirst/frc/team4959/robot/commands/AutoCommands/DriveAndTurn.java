@@ -7,23 +7,23 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Someone comment what this is later
  */
 public class DriveAndTurn extends Command {
-	
+
 	private double speed;
 	private double turn;
-//	private double speedModifier;
+	// private double speedModifier;
 	private double time;
 	private Timer timer = new Timer();
 
 	protected DriveTrain drive = Robot.driveTrain;
 
-    public DriveAndTurn(double time, double speed, double turn) {
+	public DriveAndTurn(double time, double speed, double turn) {
 		this.speed = speed;
 		this.time = time;
 		this.turn = turn;
-//		speedModifier = 0.96;
+		// speedModifier = 0.96;
 	}
 
 	// Called just before this Command runs the first time
@@ -33,7 +33,7 @@ public class DriveAndTurn extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		//speedModifier is used to prevent veering. 
+		// speedModifier is used to prevent veering.
 		drive.arcadeDrive(speed, turn);
 	}
 

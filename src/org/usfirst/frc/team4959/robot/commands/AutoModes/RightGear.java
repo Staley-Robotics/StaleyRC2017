@@ -9,10 +9,9 @@ import org.usfirst.frc.team4959.robot.commands.GearDrop.ShifterOff;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- * Drives forward then turns
- * Then uses vision to line up with the right drop 
+ * Drives forward then turns Then uses vision to line up with the right drop
  * Then it drives forward and drops gear at the right drop
- */ 
+ */
 public class RightGear extends CommandGroup {
 
 	// GyroDrive(Time, Speed)
@@ -27,11 +26,11 @@ public class RightGear extends CommandGroup {
 		addSequential(new GyroDrive(1.15, 0.8));
 		addSequential(new Delay(0.5));
 
-//		addSequential(new ExtendDrop());
-//		addSequential(new Delay(0.75));
-//		addSequential(new OpenDrop());
-//		addSequential(new Delay(1.0));
-//		addSequential(new DriveStraight(2.5, -0.5));
-//		addSequential(new CloseDrop());
+		// addSequential(new ExtendDrop());
+		// addSequential(new Delay(0.75));
+		// addSequential(new OpenDrop());
+		// addSequential(new Delay(1.0));
+		// addSequential(new DriveStraight(2.5, -0.5));
+		// addSequential(new CloseDrop());
 	}
 }

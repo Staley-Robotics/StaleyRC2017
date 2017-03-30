@@ -9,8 +9,8 @@ import org.usfirst.frc.team4959.robot.commands.GearDrop.ShifterOn;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- * Goes to the right dump to load balls
- * Then goes back and shoots into the right boiler
+ * Goes to the right dump to load balls Then goes back and shoots into the right
+ * boiler
  */
 public class RightDumpToRightBoiler extends CommandGroup {
 

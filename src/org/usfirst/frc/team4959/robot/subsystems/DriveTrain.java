@@ -5,20 +5,20 @@ import org.usfirst.frc.team4959.robot.commands.Drive.JoystickDrive;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-/** 
+/**
  * Controls basic drive functionality of the robot
  */
 public class DriveTrain extends Subsystem {
-	
+
 	public double gyroStore = 0.0;
-	
+
 	RobotDrive drive = RobotMap.driveTrain;
 
 	public void initDefaultCommand() {
 		setDefaultCommand(new JoystickDrive(1));
 	}
 
-	public void arcadeDrive(double forward, double turn){
+	public void arcadeDrive(double forward, double turn) {
 		drive.arcadeDrive(forward, turn);
 	}
 
@@ -29,7 +29,7 @@ public class DriveTrain extends Subsystem {
 	public void worldOfTanksDrive(double backward, double forward, double rotate) {
 		double speedModifier = 1;
 		double turnSpeedModifier = 1;
-		
+
 		if (backward * speedModifier > 0) {
 			drive.arcadeDrive(-backward * speedModifier, rotate * turnSpeedModifier);
 		} else if (forward > 0) {

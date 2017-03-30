@@ -22,7 +22,8 @@ public class GearDrop extends Subsystem {
 		setDefaultCommand(new RunCompressor());
 	}
 
-	// Runs the compressor until the sensor says "Stop don't run anymore" and then it stops
+	// Runs the compressor until the sensor says "Stop don't run anymore" and
+	// then it stops
 	public void runCompressor() {
 		compressor.setClosedLoopControl(true);
 	}

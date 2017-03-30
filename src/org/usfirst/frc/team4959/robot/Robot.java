@@ -36,7 +36,7 @@ import org.usfirst.frc.team4959.robot.subsystems.Shooter;
  * documentation. If you change the name of this class or the package after
  * creating this project, you must also update the manifest file in the resource
  * directory.
- */ 
+ */
 public class Robot extends IterativeRobot {
 
 	// ***** Subsystems *****
@@ -50,10 +50,10 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	protected org.usfirst.frc.team4959.robot.commands.Drive.JoystickDrive JoystickDrive;
 	protected RunClimber startClimber;
-	
+
 	public static NetworkTable table;
 	Command autonomousCommand;
-	
+
 	SendableChooser<Command> auto = new SendableChooser<>();
 
 	/**
@@ -67,28 +67,33 @@ public class Robot extends IterativeRobot {
 		table.putDouble("ayylmao", 420);
 		RobotMap.init();
 		oi = new OI();
-  
+
 		// SmartDashboard Autonomous Choices
 		auto = new SendableChooser<Command>();
 		auto.addDefault("Delay", new Delay(5));
 		auto.addObject("Center Gear Drop", new CentGear());
 		auto.addObject("Left Gear", new EmptyLeft());
 		auto.addObject("Right Gear", new RightGear());
-//		auto.addObject("Center Gear to Left Boiler", new CentGearToLeftBoiler());
-//		auto.addObject("Right Gear to Boiler", new RightGearToBoiler());
-//		auto.addObject("Right Boiler to Right Gear", new RightBoilerToRightGear());
-//		auto.addObject("Left Boiler to Left Gear", new LeftBoilerToLeftGear());
-//		auto.addObject("Right Dump To Right Boiler", new RightDumpToRightBoiler());
-//		auto.addObject("Left Dump To Left Boiler", new LeftDumpToLeftBoiler());
+		// auto.addObject("Center Gear to Left Boiler", new
+		// CentGearToLeftBoiler());
+		// auto.addObject("Right Gear to Boiler", new RightGearToBoiler());
+		// auto.addObject("Right Boiler to Right Gear", new
+		// RightBoilerToRightGear());
+		// auto.addObject("Left Boiler to Left Gear", new
+		// LeftBoilerToLeftGear());
+		// auto.addObject("Right Dump To Right Boiler", new
+		// RightDumpToRightBoiler());
+		// auto.addObject("Left Dump To Left Boiler", new
+		// LeftDumpToLeftBoiler());
 		SmartDashboard.putData("Autonomous Modes", auto);
 
 		// Grabs Camrea feed and sends it to Smartdashboard
-		 UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-		 camera.setResolution(640, 480);
-		 camera.setExposureManual(-2);
-		 camera.setFPS(30);
-//		 CameraServer.getInstance().removeServer("cam0");
-		 Robot.gearDrop.shifterOff();
+		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+		camera.setResolution(640, 480);
+		camera.setExposureManual(-2);
+		camera.setFPS(30);
+		// CameraServer.getInstance().removeServer("cam0");
+		Robot.gearDrop.shifterOff();
 	}
 
 	/**

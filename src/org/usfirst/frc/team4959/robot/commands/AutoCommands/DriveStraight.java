@@ -5,9 +5,9 @@ import org.usfirst.frc.team4959.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
- 
+
 /**
- *	Drives straight for an amount of time
+ * Drives straight for an amount of time
  */
 public class DriveStraight extends Command {
 
@@ -31,8 +31,8 @@ public class DriveStraight extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		//speedModifier is used to prevent veering. 
-		drive.tankDrive(-speed, -speed*speedModifier);
+		// speedModifier is used to prevent veering.
+		drive.tankDrive(-speed, -speed * speedModifier);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

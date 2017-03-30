@@ -11,12 +11,11 @@ import org.usfirst.frc.team4959.robot.commands.GearDrop.OpenDrop;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- * Drives forward then turns
- * Then uses vision to line up with the left drop 
- * Then it drives forward and drops gear at the left drop
- */ 
+ * Drives forward then turns Then uses vision to line up with the left drop Then
+ * it drives forward and drops gear at the left drop
+ */
 public class EmptyLeft extends CommandGroup {
-	
+
 	// GyroDrive(Time, Speed)
 	// GyroTurning(Turn, Speed)
 	// DriveStraight(Time, Speed)
@@ -34,7 +33,7 @@ public class EmptyLeft extends CommandGroup {
 		addSequential(new OpenDrop());
 		addSequential(new Delay(1.0));
 		addSequential(new DriveStraight(2.5, -0.5));
-		
+
 		addSequential(new CloseDrop());
 	}
 }

@@ -4,7 +4,7 @@ import org.usfirst.frc.team4959.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-/** 
+/**
  * Retracts the gear drop extension
  */
 public class RetractDrop extends Command {

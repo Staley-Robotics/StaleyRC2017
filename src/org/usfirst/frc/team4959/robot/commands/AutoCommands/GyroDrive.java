@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 
-/** 
+/**
  * Drives straight for an amount of time using the gyro
  */
 public class GyroDrive extends Command {
@@ -15,10 +15,9 @@ public class GyroDrive extends Command {
 	private double kp = 0.03;
 	private Timer timer = new Timer();
 	private double time, speed;
-	
+
 	private Gyro gyro = RobotMap.gyro;
 	private RobotDrive robotDrive = RobotMap.driveTrain;
-	
 
 	public GyroDrive(double time, double speed) {
 		this.time = time;

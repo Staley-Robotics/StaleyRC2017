@@ -5,7 +5,7 @@ import org.usfirst.frc.team4959.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * Closes the gear drop piston 
+ * Closes the gear drop piston
  */
 public class CloseDrop extends Command {
 

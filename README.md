@@ -10,6 +10,8 @@ Left Stick: Turning
 
 B Button: Shifter (Toggle)
 
+X Button: Shimmy (I don't know if this is tested)
+
 **X-Box Two (Reg.):**
 
 A Button: Shooter System (Toggle)

@@ -4,7 +4,7 @@ import org.usfirst.frc.team4959.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-/** 
+/**
  * Runs the compressor automatically
  */
 public class RunCompressor extends Command {

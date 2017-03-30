@@ -9,40 +9,41 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class AutoRunShooter extends Command {
-	
+
 	private final double SPEED = -0.9;
 	private double time;
 	private Timer timer = new Timer();
 
-    public AutoRunShooter(double time) {
-    	// Use requires() here to declare subsystem dependencies
-    	requires(Robot.shooter);
-    	this.time = time;
-    }
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    	timer.start();
-    }
+	public AutoRunShooter(double time) {
+		// Use requires() here to declare subsystem dependencies
+		requires(Robot.shooter);
+		this.time = time;
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	Robot.shooter.runShooter(SPEED);
-    }
+	// Called just before this Command runs the first time
+	protected void initialize() {
+		timer.start();
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-    	return (timer.get() > time);
-    }
+	// Called repeatedly when this Command is scheduled to run
+	protected void execute() {
+		Robot.shooter.runShooter(SPEED);
+	}
 
-    // Called once after isFinished returns true
-    protected void end() {
-    	timer.stop();
-    	timer.reset();
-    }
+	// Make this return true when this Command no longer needs to run execute()
+	protected boolean isFinished() {
+		return (timer.get() > time);
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    	Robot.shooter.stopShooter();
-    }
+	// Called once after isFinished returns true
+	protected void end() {
+		timer.stop();
+		timer.reset();
+	}
+
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	protected void interrupted() {
+		Robot.shooter.stopShooter();
+	}
 }
