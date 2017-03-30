@@ -4,15 +4,11 @@ import org.usfirst.frc.team4959.robot.commands.AutoCommands.AutoLoadAndShoot;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.DriveStraight;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.GyroDrive;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.GyroTurning;
-import org.usfirst.frc.team4959.robot.commands.GearDrop.CloseDrop;
-import org.usfirst.frc.team4959.robot.commands.GearDrop.ExtendDrop;
-import org.usfirst.frc.team4959.robot.commands.GearDrop.OpenDrop;
-import org.usfirst.frc.team4959.robot.commands.GearDrop.RetractDrop;
-
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- * 
+ * Starts at left boiler and shoots
+ * Then drives to the left gear drop to drop the gear there
  */
 public class LeftBoilerToLeftGear extends CommandGroup {
 	

@@ -13,7 +13,7 @@ import org.usfirst.frc.team4959.robot.commands.GearDrop.RetractDrop;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- * 
+ * Drops gear at the center then goes to shoot at left boiler
  */
 public class CentGearToLeftBoiler extends CommandGroup {
 	

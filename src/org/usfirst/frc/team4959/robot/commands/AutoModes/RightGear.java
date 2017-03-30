@@ -1,20 +1,17 @@
 package org.usfirst.frc.team4959.robot.commands.AutoModes;
 
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.Delay;
-import org.usfirst.frc.team4959.robot.commands.AutoCommands.DriveStraight;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.GyroDrive;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.GyroTurning;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.TurnToVision;
-import org.usfirst.frc.team4959.robot.commands.GearDrop.CloseDrop;
-import org.usfirst.frc.team4959.robot.commands.GearDrop.ExtendDrop;
-import org.usfirst.frc.team4959.robot.commands.GearDrop.OpenDrop;
-import org.usfirst.frc.team4959.robot.commands.GearDrop.RetractDrop;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.ShifterOff;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *
+ * Drives forward then turns
+ * Then uses vision to line up with the right drop 
+ * Then it drives forward and drops gear at the right drop
  */ 
 public class RightGear extends CommandGroup {
 

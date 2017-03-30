@@ -13,7 +13,7 @@ public class DriveAndTurn extends Command {
 	
 	private double speed;
 	private double turn;
-	private double speedModifier;
+//	private double speedModifier;
 	private double time;
 	private Timer timer = new Timer();
 
@@ -23,7 +23,7 @@ public class DriveAndTurn extends Command {
 		this.speed = speed;
 		this.time = time;
 		this.turn = turn;
-		speedModifier = 0.96;
+//		speedModifier = 0.96;
 	}
 
 	// Called just before this Command runs the first time

@@ -1,8 +1,6 @@
 package org.usfirst.frc.team4959.robot.commands.AutoCommands;
 
 import org.usfirst.frc.team4959.robot.Robot;
-import org.usfirst.frc.team4959.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -28,7 +26,8 @@ public class TurnToVision extends Command {
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
+    @SuppressWarnings("deprecation")
+	protected void execute() {
     	currentAngle = Robot.table.getDouble("angleFromGoal");
     	if(currentAngle > 2){
     		double pOut = currentAngle * kP;

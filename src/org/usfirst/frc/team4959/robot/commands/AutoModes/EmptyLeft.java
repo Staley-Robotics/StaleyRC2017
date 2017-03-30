@@ -8,12 +8,12 @@ import org.usfirst.frc.team4959.robot.commands.AutoCommands.TurnToVision;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.CloseDrop;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.ExtendDrop;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.OpenDrop;
-import org.usfirst.frc.team4959.robot.commands.GearDrop.RetractDrop;
-
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *
+ * Drives forward then turns
+ * Then uses vision to line up with the left drop 
+ * Then it drives forward and drops gear at the left drop
  */ 
 public class EmptyLeft extends CommandGroup {
 	

@@ -1,7 +1,5 @@
 package org.usfirst.frc.team4959.robot.commands.AutoCommands;
 
-import org.usfirst.frc.team4959.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**

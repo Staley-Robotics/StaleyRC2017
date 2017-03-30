@@ -5,10 +5,7 @@ import org.usfirst.frc.team4959.robot.commands.Drive.Shimmy;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.CloseDrop;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.GearExtendToggle;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.OpenDrop;
-import org.usfirst.frc.team4959.robot.commands.GearDrop.ShifterOff;
-import org.usfirst.frc.team4959.robot.commands.GearDrop.ShifterOn;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.ShifterToggle;
-import org.usfirst.frc.team4959.robot.commands.Intake.RunIntake;
 import org.usfirst.frc.team4959.robot.commands.Shooter.LoadAndShoot;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -70,8 +67,8 @@ public class OI {
 		openDrop.whenReleased(new CloseDrop());
 		
 		// Extends or Retracts the Gear Drop (First press will extend, from then on will alternate)
-		Button gearDropToggle = new JoystickButton(xboxControllertwo, RobotMap.LEFT_BUMPER);
-		gearDropToggle.whenPressed(new GearExtendToggle());
+		Button gearDropExtenderToggle = new JoystickButton(xboxControllertwo, RobotMap.LEFT_BUMPER);
+		gearDropExtenderToggle.whenPressed(new GearExtendToggle());
 		
 		
 	}  

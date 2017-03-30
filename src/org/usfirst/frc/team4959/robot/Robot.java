@@ -4,7 +4,6 @@ package org.usfirst.frc.team4959.robot;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -13,16 +12,16 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.Delay;
-import org.usfirst.frc.team4959.robot.commands.AutoModes.RightGearToBoiler;
-import org.usfirst.frc.team4959.robot.commands.AutoModes.AutoBrettv3;
-import org.usfirst.frc.team4959.robot.commands.AutoModes.CentGearToLeftBoiler;
-import org.usfirst.frc.team4959.robot.commands.AutoModes.CentGearToRightBoiler;
+//import org.usfirst.frc.team4959.robot.commands.AutoModes.RightGearToBoiler;
+import org.usfirst.frc.team4959.robot.commands.AutoModes.CentGear;
+//import org.usfirst.frc.team4959.robot.commands.AutoModes.CentGearToLeftBoiler;
+//import org.usfirst.frc.team4959.robot.commands.AutoModes.CentGearToRightBoiler;
 import org.usfirst.frc.team4959.robot.commands.AutoModes.EmptyLeft;
 import org.usfirst.frc.team4959.robot.commands.AutoModes.RightGear;
-import org.usfirst.frc.team4959.robot.commands.AutoModes.LeftBoilerToLeftGear;
-import org.usfirst.frc.team4959.robot.commands.AutoModes.LeftDumpToLeftBoiler;
-import org.usfirst.frc.team4959.robot.commands.AutoModes.RightBoilerToRightGear;
-import org.usfirst.frc.team4959.robot.commands.AutoModes.RightDumpToRightBoiler;
+//import org.usfirst.frc.team4959.robot.commands.AutoModes.LeftBoilerToLeftGear;
+//import org.usfirst.frc.team4959.robot.commands.AutoModes.LeftDumpToLeftBoiler;
+//import org.usfirst.frc.team4959.robot.commands.AutoModes.RightBoilerToRightGear;
+//import org.usfirst.frc.team4959.robot.commands.AutoModes.RightDumpToRightBoiler;
 import org.usfirst.frc.team4959.robot.commands.Climber.RunClimber;
 import org.usfirst.frc.team4959.robot.subsystems.Agrivator;
 import org.usfirst.frc.team4959.robot.subsystems.Climber;
@@ -47,7 +46,6 @@ public class Robot extends IterativeRobot {
 	public static final Climber climber = new Climber();
 	public static final Shooter shooter = new Shooter();
 	public static final DriveTrain driveTrain = new DriveTrain();
-//	public static final PowerDistributionPanel pdp = new PowerDistributionPanel();
 
 	public static OI oi;
 	protected org.usfirst.frc.team4959.robot.commands.Drive.JoystickDrive JoystickDrive;
@@ -62,6 +60,7 @@ public class Robot extends IterativeRobot {
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
+	@SuppressWarnings("deprecation")
 	@Override
 	public void robotInit() {
 		table = NetworkTable.getTable("LiftTracker");
@@ -72,10 +71,9 @@ public class Robot extends IterativeRobot {
 		// SmartDashboard Autonomous Choices
 		auto = new SendableChooser<Command>();
 		auto.addDefault("Delay", new Delay(5));
-		auto.addObject("Center Gear Drop", new AutoBrettv3());
+		auto.addObject("Center Gear Drop", new CentGear());
 		auto.addObject("Left Gear", new EmptyLeft());
 		auto.addObject("Right Gear", new RightGear());
-//		auto.addObject("Center Gear (RUN THIS)//to Right Boiler", new CentGearToRightBoiler());
 //		auto.addObject("Center Gear to Left Boiler", new CentGearToLeftBoiler());
 //		auto.addObject("Right Gear to Boiler", new RightGearToBoiler());
 //		auto.addObject("Right Boiler to Right Gear", new RightBoilerToRightGear());

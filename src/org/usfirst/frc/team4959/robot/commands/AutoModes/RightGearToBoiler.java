@@ -7,7 +7,8 @@ import org.usfirst.frc.team4959.robot.commands.AutoCommands.GyroTurning;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *
+ * Drops gear on right gear drop
+ * then drives to right boiler and shoots
  */
 public class RightGearToBoiler extends CommandGroup {
 	
