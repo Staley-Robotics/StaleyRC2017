@@ -48,9 +48,8 @@ public class RobotMap {
 	public static final int FRONT_RIGHT_DRIVE_MOTOR_PORT = 0;
 	public static final int BACK_RIGHT_DRIVE_MOTOR_PORT = 1;
 
-	public static final int SHOOTER_MOTOR_PORT = 3;
-	public static final int INTAKE_MOTOR_PORT = 2;
-	public static final int AGRIVATOR_MOTOR_PORT = 6;
+	public static final int SHOOTER_MOTOR_PORT = 6;
+	public static final int AGRIVATOR_MOTOR_PORT = 3;
 
 	public static final int CLIMBER_PORT = 7;
 
@@ -61,7 +60,6 @@ public class RobotMap {
 	public static SpeedController brDriveMotor = new Talon(BACK_RIGHT_DRIVE_MOTOR_PORT);
 
 	public static SpeedController shooterMotor = new Talon(SHOOTER_MOTOR_PORT);
-	public static SpeedController intakeMotor = new Talon(INTAKE_MOTOR_PORT);
 	public static SpeedController agrivatorMotor = new Talon(AGRIVATOR_MOTOR_PORT);
 
 	public static SpeedController climerMotor = new Talon(CLIMBER_PORT);

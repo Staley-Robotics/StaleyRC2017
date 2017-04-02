@@ -5,7 +5,7 @@ import org.usfirst.frc.team4959.robot.commands.Drive.Shimmy;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.CloseDrop;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.GearExtendToggle;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.OpenDrop;
-import org.usfirst.frc.team4959.robot.commands.GearDrop.ShifterToggle;
+import org.usfirst.frc.team4959.robot.commands.Shifter.ShifterToggle;
 import org.usfirst.frc.team4959.robot.commands.Shooter.LoadAndShoot;
 
 import edu.wpi.first.wpilibj.Joystick;

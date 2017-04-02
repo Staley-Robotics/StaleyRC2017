@@ -27,7 +27,6 @@ import org.usfirst.frc.team4959.robot.subsystems.Agrivator;
 import org.usfirst.frc.team4959.robot.subsystems.Climber;
 import org.usfirst.frc.team4959.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4959.robot.subsystems.GearDrop;
-import org.usfirst.frc.team4959.robot.subsystems.Intake;
 import org.usfirst.frc.team4959.robot.subsystems.Shooter;
 
 /**
@@ -42,7 +41,6 @@ public class Robot extends IterativeRobot {
 	// ***** Subsystems *****
 	public static final GearDrop gearDrop = new GearDrop();
 	public static final Agrivator agrivator = new Agrivator();
-	public static final Intake intake = new Intake();
 	public static final Climber climber = new Climber();
 	public static final Shooter shooter = new Shooter();
 	public static final DriveTrain driveTrain = new DriveTrain();

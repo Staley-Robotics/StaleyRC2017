@@ -4,7 +4,7 @@ import org.usfirst.frc.team4959.robot.commands.AutoCommands.AutoLoadAndShoot;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.Delay;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.DriveStraight;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.GyroTurning;
-import org.usfirst.frc.team4959.robot.commands.GearDrop.ShifterOn;
+import org.usfirst.frc.team4959.robot.commands.Shifter.ShifterOn;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 

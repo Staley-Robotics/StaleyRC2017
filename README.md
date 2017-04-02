@@ -33,8 +33,6 @@ Back Right Motor: 1
 
 Shooter Motor: 6
 
-In-take Motor: 2
-
 Agrivator Motor: 3
 
 Climber Motor: 7
