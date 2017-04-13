@@ -53,6 +53,7 @@ public class TurnToVision extends Command {
 	// Called once after isFinished returns true
 	protected void end() {
 		Robot.driveTrain.arcadeDrive(0, 0);
+		System.out.println("Vision turning has ended");
 	}
 
 	// Called when another command which requires one or more of the same

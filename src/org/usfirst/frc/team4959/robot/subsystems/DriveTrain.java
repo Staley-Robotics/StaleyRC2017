@@ -28,7 +28,7 @@ public class DriveTrain extends Subsystem {
 
 	public void worldOfTanksDrive(double backward, double forward, double rotate) {
 		double speedModifier = 1;
-		double turnSpeedModifier = 1;
+		double turnSpeedModifier = -1;
 
 		if (backward * speedModifier > 0) {
 			drive.arcadeDrive(-backward * speedModifier, rotate * turnSpeedModifier);
@@ -40,7 +40,7 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public void turn(double turn) {
-		drive.tankDrive(turn, -turn);
+		drive.tankDrive(-turn, turn);
 	}
 
 	public void stop() {

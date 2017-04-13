@@ -14,15 +14,17 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class CentGear extends CommandGroup {
 
 	public CentGear() {
-
-		addSequential(new GyroDrive(2.2, 0.65));
-		addSequential(new Delay(0.5));
+		addSequential(new DriveStraight(0.08, -1));
+		addSequential(new Delay(0.1));
+		addSequential(new GyroDrive(1.62, 0.45));
+//		addSequential(new GyroDrive(0.25, 0.2));
+		addSequential(new Delay(0.3));
 		addSequential(new ExtendDrop());
-		addSequential(new Delay(1));
+		addSequential(new Delay(0.5));
 		addSequential(new OpenDrop());
-		addSequential(new Delay(1.75));
-		addSequential(new DriveStraight(2.0, -0.5));
-		addSequential(new DriveStraight(2.7, -0.6));
+		addSequential(new Delay(0.5));
+		addSequential(new DriveStraight(1.0, -0.5));
+		addSequential(new DriveStraight(1.2, -0.6));
 		// addSequential(new DriveStraight(2, 0.8));
 	}
 }

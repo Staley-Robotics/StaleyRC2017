@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class RunAgrivator extends Command {
 
-	private final double SPEED = -0.16;
+	private final double SPEED = -0.12;
 
 	public RunAgrivator() {
 		requires(Robot.agrivator);

@@ -12,8 +12,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class GearDrop extends Subsystem {
 
-	DoubleSolenoid gearDrop = new DoubleSolenoid(2, 3);
-	DoubleSolenoid gearDropExtender = new DoubleSolenoid(0, 1);
+	DoubleSolenoid gearDrop = new DoubleSolenoid(0, 1);
+	DoubleSolenoid gearDropExtender = new DoubleSolenoid(2, 3);
 	Solenoid shifter = new Solenoid(4);
 	Solenoid shifter2 = new Solenoid(5);
 	Compressor compressor = new Compressor(0);
@@ -50,14 +50,18 @@ public class GearDrop extends Subsystem {
 
 	// Shifts the gearbox up
 	public void shifterOn() {
-		shifter.set(true);
-		shifter2.set(false);
+		shifter2.set(true);
+		shifter.set(false);
+//		shifter.set(true);
+//		shifter2.set(false);
 	}
 
 	// Shifts the gearbox down
 	public void shifterOff() {
-		shifter2.set(true);
-		shifter.set(false);
+		shifter.set(true);
+		shifter2.set(false);
+//		shifter2.set(true);
+//		shifter.set(false);
 	}
 
 }

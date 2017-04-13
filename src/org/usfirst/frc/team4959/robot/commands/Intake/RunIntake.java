@@ -1,15 +1,18 @@
-package org.usfirst.frc.team4959.robot.commands.GearDrop;
+package org.usfirst.frc.team4959.robot.commands.Intake;
 
 import org.usfirst.frc.team4959.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * Retracts the gear drop extension
+ * Runs the intake motor
  */
-public class RetractDrop extends Command {
+public class RunIntake extends Command {
 
-	public RetractDrop() {
+	private final double SPEED = -0.6;
+
+	public RunIntake() {
+		//requires(Robot.intake);
 	}
 
 	// Called just before this Command runs the first time
@@ -18,21 +21,21 @@ public class RetractDrop extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.gearDrop.retract();
+		//Robot.intake.runIntake(SPEED);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return true;
+		return false;
 	}
 
 	// Called once after isFinished returns true
 	protected void end() {
-		System.out.println("Retract Drop End");
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
+		//Robot.intake.stopIntake();
 	}
 }

@@ -12,11 +12,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.Delay;
+import org.usfirst.frc.team4959.robot.commands.AutoModes.AutoBrettV4;
 //import org.usfirst.frc.team4959.robot.commands.AutoModes.RightGearToBoiler;
 import org.usfirst.frc.team4959.robot.commands.AutoModes.CentGear;
 //import org.usfirst.frc.team4959.robot.commands.AutoModes.CentGearToLeftBoiler;
 //import org.usfirst.frc.team4959.robot.commands.AutoModes.CentGearToRightBoiler;
 import org.usfirst.frc.team4959.robot.commands.AutoModes.EmptyLeft;
+import org.usfirst.frc.team4959.robot.commands.AutoModes.LeftBoilerToLeftGear;
+import org.usfirst.frc.team4959.robot.commands.AutoModes.RightBoilerToRightGear;
 import org.usfirst.frc.team4959.robot.commands.AutoModes.RightGear;
 //import org.usfirst.frc.team4959.robot.commands.AutoModes.LeftBoilerToLeftGear;
 //import org.usfirst.frc.team4959.robot.commands.AutoModes.LeftDumpToLeftBoiler;
@@ -44,6 +47,9 @@ public class Robot extends IterativeRobot {
 	public static final Climber climber = new Climber();
 	public static final Shooter shooter = new Shooter();
 	public static final DriveTrain driveTrain = new DriveTrain();
+	private UsbCamera camera;
+	
+	private static final int AUTO_EXPOSURE = -2;
 
 	public static OI oi;
 	protected org.usfirst.frc.team4959.robot.commands.Drive.JoystickDrive JoystickDrive;
@@ -69,28 +75,28 @@ public class Robot extends IterativeRobot {
 		// SmartDashboard Autonomous Choices
 		auto = new SendableChooser<Command>();
 		auto.addDefault("Delay", new Delay(5));
+		auto.addObject("Auto Brett V4", new AutoBrettV4());
 		auto.addObject("Center Gear Drop", new CentGear());
 		auto.addObject("Left Gear", new EmptyLeft());
 		auto.addObject("Right Gear", new RightGear());
 		// auto.addObject("Center Gear to Left Boiler", new
 		// CentGearToLeftBoiler());
 		// auto.addObject("Right Gear to Boiler", new RightGearToBoiler());
-		// auto.addObject("Right Boiler to Right Gear", new
-		// RightBoilerToRightGear());
-		// auto.addObject("Left Boiler to Left Gear", new
-		// LeftBoilerToLeftGear());
+		 auto.addObject("Right Boiler to Right Gear", new RightBoilerToRightGear());
+		 auto.addObject("Left Boiler to Left Gear", new LeftBoilerToLeftGear());
 		// auto.addObject("Right Dump To Right Boiler", new
 		// RightDumpToRightBoiler());
 		// auto.addObject("Left Dump To Left Boiler", new
 		// LeftDumpToLeftBoiler());
 		SmartDashboard.putData("Autonomous Modes", auto);
 
-		// Grabs Camrea feed and sends it to Smartdashboard
-		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+		// Grabs Camera feed and sends it to smart dashboard
+		camera = CameraServer.getInstance().startAutomaticCapture();
 		camera.setResolution(640, 480);
-		camera.setExposureManual(-2);
 		camera.setFPS(30);
-		// CameraServer.getInstance().removeServer("cam0");
+		camera.setExposureManual(AUTO_EXPOSURE);
+		
+		//Double check for shifter toggle. 
 		Robot.gearDrop.shifterOff();
 	}
 
@@ -121,13 +127,20 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
+		
+		//Turns shifter power off and retracts gear drop. 
 		Robot.gearDrop.retract();
 		Robot.gearDrop.shifterOff();
+		
+		//Sets camera exposure to AUTO_EXPOSURE not to be confused with automatic detection. 
+		camera.setExposureManual(AUTO_EXPOSURE);
+		
 		autonomousCommand = auto.getSelected();
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();
+		
 	}
 
 	/**
@@ -147,6 +160,9 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
+		
+		//Sets camera exposure to auto detect.
+		camera.setExposureAuto();
 	}
 
 	/**
@@ -155,6 +171,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		
+		//Sends Gyro info to smart dashboard. 
 		SmartDashboard.putData("Gyro", RobotMap.gyro);
 	}
 

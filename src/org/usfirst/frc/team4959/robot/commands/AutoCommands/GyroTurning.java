@@ -25,8 +25,8 @@ public class GyroTurning extends Command {
 	 */
 	public GyroTurning(double angle, double speed) {
 		this.speed = speed;
-		this.toAngle = angle;
-		GyroTurning.toAnglePass = angle;
+		this.toAngle = -angle;
+		GyroTurning.toAnglePass = -angle;
 		requires(Robot.driveTrain);
 	}
 
