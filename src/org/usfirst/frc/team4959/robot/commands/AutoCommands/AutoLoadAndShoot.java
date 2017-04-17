@@ -12,7 +12,7 @@ public class AutoLoadAndShoot extends Command {
 	private Timer timer = new Timer();
 	private double time = 4;
 	private final double SHOOTER_SPEED = -0.9;
-	private final double AGRIVATOR_SPEED = -0.09;
+	private final double AGRIVATOR_SPEED = -0.12;
 
 	public AutoLoadAndShoot() {
 		timer.reset();

@@ -1,10 +1,13 @@
 package org.usfirst.frc.team4959.robot.commands.AutoModes;
 
+import java.awt.Robot;
+
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.Delay;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.DriveStraight;
 import org.usfirst.frc.team4959.robot.commands.AutoCommands.GyroDrive;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.ExtendDrop;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.OpenDrop;
+import org.usfirst.frc.team4959.robot.commands.GearDrop.ShifterOff;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -14,7 +17,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class CentGear extends CommandGroup {
 
 	public CentGear() {
-		addSequential(new DriveStraight(0.08, -1));
+		addSequential(new ShifterOff());
 		addSequential(new Delay(0.1));
 		addSequential(new GyroDrive(1.62, 0.45));
 //		addSequential(new GyroDrive(0.25, 0.2));

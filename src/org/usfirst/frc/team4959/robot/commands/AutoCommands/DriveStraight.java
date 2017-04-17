@@ -21,7 +21,7 @@ public class DriveStraight extends Command {
 	public DriveStraight(double time, double speed) {
 		this.speed = speed;
 		this.time = time;
-		speedModifier = 0.96;
+		speedModifier = 1;
 	}
 
 	// Called just before this Command runs the first time
