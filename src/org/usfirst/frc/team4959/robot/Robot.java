@@ -47,7 +47,7 @@ public class Robot extends IterativeRobot {
 	public static final Climber climber = new Climber();
 	public static final Shooter shooter = new Shooter();
 	public static final DriveTrain driveTrain = new DriveTrain();
-	private UsbCamera camera;
+//	private UsbCamera camera;
 	
 	private static final int AUTO_EXPOSURE = -2;
 
@@ -91,10 +91,10 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Autonomous Modes", auto);
 
 		// Grabs Camera feed and sends it to smart dashboard
-		camera = CameraServer.getInstance().startAutomaticCapture();
-		camera.setResolution(640, 480);
-		camera.setFPS(30);
-		camera.setExposureManual(AUTO_EXPOSURE);
+//		camera = CameraServer.getInstance().startAutomaticCapture();
+//		camera.setResolution(640, 480);
+//		camera.setFPS(15);
+//		camera.setExposureManual(AUTO_EXPOSURE);
 		
 		//Double check for shifter toggle. 
 		Robot.gearDrop.shifterOff();
@@ -133,7 +133,7 @@ public class Robot extends IterativeRobot {
 		Robot.gearDrop.shifterOff();
 		
 		//Sets camera exposure to AUTO_EXPOSURE not to be confused with automatic detection. 
-		camera.setExposureManual(AUTO_EXPOSURE);
+//		camera.setExposureManual(AUTO_EXPOSURE);
 		
 		autonomousCommand = auto.getSelected();
 
@@ -162,7 +162,7 @@ public class Robot extends IterativeRobot {
 			autonomousCommand.cancel();
 		
 		//Sets camera exposure to auto detect.
-		camera.setExposureAuto();
+//		camera.setExposureAuto();
 	}
 
 	/**

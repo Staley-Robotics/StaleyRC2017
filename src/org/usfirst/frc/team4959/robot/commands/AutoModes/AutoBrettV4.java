@@ -11,6 +11,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoBrettV4 extends CommandGroup {
 
 	public AutoBrettV4() {
-		addSequential(new DriveStraight(1.5, 0.6));
+		addSequential(new DriveStraight(1.5, 0.7));
 	}
 }

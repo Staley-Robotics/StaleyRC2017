@@ -19,7 +19,7 @@ public class CentGear extends CommandGroup {
 	public CentGear() {
 		addSequential(new ShifterOff());
 		addSequential(new Delay(0.1));
-		addSequential(new GyroDrive(1.62, 0.45));
+		addSequential(new GyroDrive(1.8, 0.45));
 //		addSequential(new GyroDrive(0.25, 0.2));
 		addSequential(new Delay(0.3));
 		addSequential(new ExtendDrop());

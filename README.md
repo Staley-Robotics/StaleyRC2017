@@ -14,7 +14,9 @@ X Button: Shimmy (I don't know if this is tested)
 
 **X-Box Two (Reg.):**
 
-A Button: Shooter System (Toggle)
+A Button: Shooter (Toggle)
+
+X Button: Agrivator (Toggle)
 
 B Button: Run Climber (while held)
 

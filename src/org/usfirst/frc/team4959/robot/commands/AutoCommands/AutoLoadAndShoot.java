@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class AutoLoadAndShoot extends Command {
 	private Timer timer = new Timer();
-	private double time = 4;
+	private double time = 5;
 	private final double SHOOTER_SPEED = -0.9;
 	private final double AGRIVATOR_SPEED = -0.12;
 

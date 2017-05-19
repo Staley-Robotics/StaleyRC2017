@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4959.robot;
 
+import org.usfirst.frc.team4959.robot.commands.Agrivator.RunAgrivator;
 import org.usfirst.frc.team4959.robot.commands.Climber.RunClimber;
 import org.usfirst.frc.team4959.robot.commands.Drive.Shimmy;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.CloseDrop;
@@ -7,6 +8,7 @@ import org.usfirst.frc.team4959.robot.commands.GearDrop.GearExtendToggle;
 import org.usfirst.frc.team4959.robot.commands.GearDrop.OpenDrop;
 import org.usfirst.frc.team4959.robot.commands.Shifter.ShifterToggle;
 import org.usfirst.frc.team4959.robot.commands.Shooter.LoadAndShoot;
+import org.usfirst.frc.team4959.robot.commands.Shooter.RunShooter;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -38,7 +40,10 @@ public class OI {
 		shimmy.whileHeld(new Shimmy());
 
 		Button runShooter = new JoystickButton(xboxControllertwo, RobotMap.A_BUTTON);
-		runShooter.toggleWhenPressed(new LoadAndShoot());
+		runShooter.toggleWhenPressed(new RunShooter());
+		
+		Button runAgrivator = new JoystickButton(xboxControllertwo, RobotMap.X_BUTTON);
+		runAgrivator.toggleWhenPressed(new RunAgrivator());
 
 		// // Shift Off
 		// Button shifterOff = new JoystickButton(xboxController,
