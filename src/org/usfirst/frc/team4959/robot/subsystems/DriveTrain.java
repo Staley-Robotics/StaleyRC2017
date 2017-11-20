@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * Controls basic drive functionality of the robot
  */
 public class DriveTrain extends Subsystem {
+	
+	//Tyler Sucks
 
 	public double gyroStore = 0.0;
 
