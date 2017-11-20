@@ -9,7 +9,8 @@ import edu.wpi.first.wpilibj.command.Command;
  * Runs the shooter motor
  */
 public class RunShooter extends Command {
-	private final double SPEED = -0.89;
+//	private final double SPEED = -0.89;
+	private final double SPEED = -1.00;
 
 	public RunShooter() {
 		requires(Robot.shooter);

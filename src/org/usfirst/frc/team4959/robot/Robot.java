@@ -17,7 +17,7 @@ import org.usfirst.frc.team4959.robot.commands.AutoModes.AutoBrettV4;
 import org.usfirst.frc.team4959.robot.commands.AutoModes.CentGear;
 //import org.usfirst.frc.team4959.robot.commands.AutoModes.CentGearToLeftBoiler;
 //import org.usfirst.frc.team4959.robot.commands.AutoModes.CentGearToRightBoiler;
-import org.usfirst.frc.team4959.robot.commands.AutoModes.EmptyLeft;
+import org.usfirst.frc.team4959.robot.commands.AutoModes.LeftGear;
 import org.usfirst.frc.team4959.robot.commands.AutoModes.LeftBoilerToLeftGear;
 import org.usfirst.frc.team4959.robot.commands.AutoModes.RightBoilerToRightGear;
 import org.usfirst.frc.team4959.robot.commands.AutoModes.RightGear;
@@ -47,7 +47,7 @@ public class Robot extends IterativeRobot {
 	public static final Climber climber = new Climber();
 	public static final Shooter shooter = new Shooter();
 	public static final DriveTrain driveTrain = new DriveTrain();
-//	private UsbCamera camera;
+	private UsbCamera camera;
 	
 	private static final int AUTO_EXPOSURE = -2;
 
@@ -77,7 +77,7 @@ public class Robot extends IterativeRobot {
 		auto.addDefault("Delay", new Delay(5));
 		auto.addObject("Auto Brett V4", new AutoBrettV4());
 		auto.addObject("Center Gear Drop", new CentGear());
-		auto.addObject("Left Gear", new EmptyLeft());
+		auto.addObject("Left Gear", new LeftGear());
 		auto.addObject("Right Gear", new RightGear());
 		// auto.addObject("Center Gear to Left Boiler", new
 		// CentGearToLeftBoiler());
@@ -91,10 +91,10 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Autonomous Modes", auto);
 
 		// Grabs Camera feed and sends it to smart dashboard
-//		camera = CameraServer.getInstance().startAutomaticCapture();
-//		camera.setResolution(640, 480);
-//		camera.setFPS(15);
-//		camera.setExposureManual(AUTO_EXPOSURE);
+		camera = CameraServer.getInstance().startAutomaticCapture();
+		camera.setResolution(360, 270);
+		camera.setFPS(15);
+		camera.setExposureManual(AUTO_EXPOSURE);
 		
 		//Double check for shifter toggle. 
 		Robot.gearDrop.shifterOff();
@@ -162,7 +162,7 @@ public class Robot extends IterativeRobot {
 			autonomousCommand.cancel();
 		
 		//Sets camera exposure to auto detect.
-//		camera.setExposureAuto();
+		camera.setExposureAuto();
 	}
 
 	/**

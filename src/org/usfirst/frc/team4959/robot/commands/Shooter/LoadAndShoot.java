@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class LoadAndShoot extends CommandGroup {
 
 	public LoadAndShoot() {
-		addParallel(new RunAgrivator());
+		addParallel(new RunAgrivator(-0.12));
 		addParallel(new RunShooter());
 	}
 }

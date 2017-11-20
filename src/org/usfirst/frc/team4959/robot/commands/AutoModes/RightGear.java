@@ -23,9 +23,9 @@ public class RightGear extends CommandGroup {
 		addSequential(new GyroDrive(1.3, 0.6));
 		addSequential(new GyroTurning(45, 0.6));
 		
-		addSequential(new GyroDrive(0.7, 0.3));
+//		addSequential(new GyroDrive(0.7, 0.3));
 		
-		addSequential(new TurnToVision());
+//		addSequential(new TurnToVision());
 		
 //		addSequential(new Delay(0.5));
 //		

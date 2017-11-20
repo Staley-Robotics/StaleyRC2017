@@ -19,7 +19,7 @@ public class GyroTurning extends Command {
 	public static double toAnglePass;
 
 	/*
-	 * angle - the target angle of the trun speed - the power sent to the speed
+	 * angle - the target angle of the turn speed - the power sent to the speed
 	 * controller toAnglePass - static variable to pass the toAngle through
 	 * multiple classes as a static value
 	 */

@@ -43,7 +43,9 @@ public class OI {
 		runShooter.toggleWhenPressed(new RunShooter());
 		
 		Button runAgrivator = new JoystickButton(xboxControllertwo, RobotMap.X_BUTTON);
-		runAgrivator.toggleWhenPressed(new RunAgrivator());
+		runAgrivator.toggleWhenPressed(new RunAgrivator(-0.2));
+		Button reverseAgrivator = new JoystickButton(xboxControllertwo, RobotMap.BACK_BUTTON);
+		reverseAgrivator.toggleWhenPressed(new RunAgrivator(0.12));
 
 		// // Shift Off
 		// Button shifterOff = new JoystickButton(xboxController,

@@ -9,11 +9,12 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class RunAgrivator extends Command {
 
-	private final double SPEED = -0.12;
+	private double speed;
 	//-0.12
 
-	public RunAgrivator() {
+	public RunAgrivator(double speed) {
 		requires(Robot.agrivator);
+		this.speed = speed;
 	}
 
 	// Called just before this Command runs the first time
@@ -22,7 +23,7 @@ public class RunAgrivator extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.agrivator.runAgrivator(SPEED);
+		Robot.agrivator.runAgrivator(speed);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
